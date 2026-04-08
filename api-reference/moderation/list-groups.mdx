@@ -1,0 +1,40 @@
+---
+title: "List Groups"
+api: "GET /api/v1/gateway/{name}/groups"
+description: "List all Telegram groups connected to a gateway"
+---
+
+## Path Parameters
+
+<ParamField path="name" type="string" required>Gateway name.</ParamField>
+
+## Response
+
+<ResponseField name="items" type="array">
+  Array of group objects.
+  <Expandable title="Group fields">
+    <ResponseField name="id" type="number">Group ID (internal)</ResponseField>
+    <ResponseField name="chatId" type="string">Telegram Chat ID</ResponseField>
+    <ResponseField name="title" type="string">Group title</ResponseField>
+    <ResponseField name="requireMention" type="boolean">Whether bot requires @mention</ResponseField>
+    <ResponseField name="fallbackLanguage" type="string">Fallback language code (null for auto)</ResponseField>
+  </Expandable>
+</ResponseField>
+
+```json
+{
+  "code": 0,
+  "message": "OK",
+  "data": {
+    "items": [
+      {
+        "id": 1,
+        "chatId": "-1001234567890",
+        "title": "My Community",
+        "requireMention": false,
+        "fallbackLanguage": null
+      }
+    ]
+  }
+}
+```

@@ -1,68 +1,125 @@
 {
   "$schema": "https://mintlify.com/docs.json",
   "theme": "mint",
-  "name": "Mint Starter Kit",
+  "name": "NebulaClaw",
   "colors": {
-    "primary": "#16A34A",
-    "light": "#07C983",
-    "dark": "#15803D"
+    "primary": "#7C3AED",
+    "light": "#A78BFA",
+    "dark": "#5B21B6"
   },
   "favicon": "/favicon.svg",
+  "logo": {
+    "light": "/logo/light.svg",
+    "dark": "/logo/dark.svg"
+  },
+  "navbar": {
+    "links": [
+      {
+        "label": "Console",
+        "href": "https://nonprod.nebulaclaw.ai"
+      }
+    ],
+    "primary": {
+      "type": "button",
+      "label": "Get Started",
+      "href": "https://nonprod.nebulaclaw.ai/login"
+    }
+  },
   "navigation": {
     "tabs": [
       {
         "tab": "Guides",
         "groups": [
           {
-            "group": "Getting started",
+            "group": "Getting Started",
             "pages": [
-              "index",
+              "introduction",
               "quickstart",
-              "development"
+              "concepts"
             ]
           },
           {
-            "group": "Customization",
+            "group": "Agent Setup",
             "pages": [
-              "essentials/settings",
-              "essentials/navigation"
+              "agent/create-agent",
+              "agent/personality",
+              "agent/knowledge-base"
             ]
           },
           {
-            "group": "Writing content",
+            "group": "Channels",
             "pages": [
-              "essentials/markdown",
-              "essentials/code",
-              "essentials/images",
-              "essentials/reusable-snippets"
+              "channels/telegram",
+              "channels/discord",
+              "channels/slack"
             ]
           },
           {
-            "group": "AI tools",
+            "group": "Moderation",
             "pages": [
-              "ai-tools/cursor",
-              "ai-tools/claude-code",
-              "ai-tools/windsurf"
+              "moderation/rules",
+              "moderation/groups",
+              "moderation/audit-log"
+            ]
+          },
+          {
+            "group": "Analytics & Billing",
+            "pages": [
+              "analytics/dashboard",
+              "billing/plans",
+              "billing/usage"
             ]
           }
         ]
       },
       {
-        "tab": "API reference",
+        "tab": "API Reference",
         "groups": [
           {
-            "group": "API documentation",
+            "group": "Overview",
             "pages": [
-              "api-reference/introduction"
+              "api-reference/overview",
+              "api-reference/authentication"
             ]
           },
           {
-            "group": "Endpoint examples",
+            "group": "Auth",
             "pages": [
-              "api-reference/endpoint/get",
-              "api-reference/endpoint/create",
-              "api-reference/endpoint/delete",
-              "api-reference/endpoint/webhook"
+              "api-reference/auth/google-login",
+              "api-reference/auth/user-info",
+              "api-reference/auth/logout"
+            ]
+          },
+          {
+            "group": "Gateway",
+            "pages": [
+              "api-reference/gateway/list-gateways",
+              "api-reference/gateway/create-gateway",
+              "api-reference/gateway/get-gateway",
+              "api-reference/gateway/update-gateway",
+              "api-reference/gateway/delete-gateway"
+            ]
+          },
+          {
+            "group": "Moderation",
+            "pages": [
+              "api-reference/moderation/list-rules",
+              "api-reference/moderation/create-rule",
+              "api-reference/moderation/update-rule",
+              "api-reference/moderation/delete-rule",
+              "api-reference/moderation/list-groups",
+              "api-reference/moderation/add-group",
+              "api-reference/moderation/update-group",
+              "api-reference/moderation/delete-group"
+            ]
+          },
+          {
+            "group": "Knowledge",
+            "pages": [
+              "api-reference/knowledge/list-documents",
+              "api-reference/knowledge/create-document",
+              "api-reference/knowledge/update-document",
+              "api-reference/knowledge/delete-document"
             ]
           }
         ]
@@ -71,52 +128,23 @@
     "global": {
       "anchors": [
         {
-          "anchor": "Documentation",
-          "href": "https://mintlify.com/docs",
-          "icon": "book-open-cover"
+          "anchor": "GitHub",
+          "href": "https://github.com/Manta-Network/Nebulaclaw",
+          "icon": "github"
         },
         {
-          "anchor": "Blog",
-          "href": "https://mintlify.com/blog",
-          "icon": "newspaper"
+          "anchor": "Community",
+          "href": "https://t.me/nebulaclaw",
+          "icon": "paper-plane"
         }
       ]
     }
   },
-  "logo": {
-    "light": "/logo/light.svg",
-    "dark": "/logo/dark.svg"
-  },
-  "navbar": {
-    "links": [
-      {
-        "label": "Support",
-        "href": "mailto:hi@mintlify.com"
-      }
-    ],
-    "primary": {
-      "type": "button",
-      "label": "Dashboard",
-      "href": "https://dashboard.mintlify.com"
-    }
-  },
-  "contextual": {
-    "options": [
-     "copy",
-     "view",
-     "chatgpt",
-     "claude",
-     "perplexity",
-     "mcp",
-     "cursor",
-     "vscode"
-   ]
-  },
   "footer": {
     "socials": {
-      "x": "https://x.com/mintlify",
-      "github": "https://github.com/mintlify",
-      "linkedin": "https://linkedin.com/company/mintlify"
+      "x": "https://x.com/nebulaclaw",
+      "github": "https://github.com/Manta-Network/Nebulaclaw",
+      "telegram": "https://t.me/nebulaclaw"
     }
   }
 }

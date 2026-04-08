@@ -1,0 +1,34 @@
+---
+title: "Get User Info"
+api: "GET /api/v1/auth/user_info"
+description: "Get the current authenticated user's information"
+---
+
+## Response
+
+<ResponseField name="user" type="object">
+  The authenticated user object.
+  <Expandable title="User fields">
+    <ResponseField name="id" type="number">User ID</ResponseField>
+    <ResponseField name="email" type="string">User email address</ResponseField>
+    <ResponseField name="username" type="string">Display name</ResponseField>
+    <ResponseField name="avatar" type="string">Google avatar URL</ResponseField>
+  </Expandable>
+</ResponseField>
+
+```json
+{
+  "code": 0,
+  "message": "OK",
+  "data": {
+    "user": {
+      "id": 123,
+      "email": "user@example.com",
+      "username": "user",
+      "avatar": "https://lh3.googleusercontent.com/..."
+    }
+  }
+}
+```
+
+<Note>This endpoint works with both Bearer token and cookie-based authentication.</Note>

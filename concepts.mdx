@@ -1,0 +1,58 @@
+---
+title: Core Concepts
+description: "Understand the building blocks of NebulaClaw"
+---
+
+# Core Concepts
+
+## Agent (Gateway)
+
+An **Agent** is your AI bot instance. Each agent has its own AI model, personality, knowledge base, and connected channels. When you create an agent, NebulaClaw provisions a dedicated gateway that handles all messaging and moderation.
+
+Agents take about 30 seconds to provision. The console automatically polls for status updates during startup.
+
+## Personality
+
+**Personality** controls how your agent communicates. Choose from four presets:
+
+- **Friendly** — Casual, emoji-friendly, approachable
+- **Professional** — Formal, structured, business-like
+- **Creative** — Imaginative, playful, uses metaphors
+- **Concise** — Brief, direct, no fluff
+
+You can also write a **Custom** personality — a free-form description of how your agent should behave, what tone to use, and any specific instructions.
+
+<Tip>Switching between presets preserves your custom text, so you can experiment freely.</Tip>
+
+## Knowledge Base
+
+The **Knowledge Base** is a collection of documents your agent references when answering questions. Upload FAQs, product docs, community guidelines, or any text-based content.
+
+Documents are indexed for semantic search — the agent finds relevant passages even when users don't use exact keywords.
+
+## Moderation Rules
+
+**Moderation Rules** use natural language descriptions that the AI interprets and enforces. Instead of writing regex patterns or keyword lists, describe the behavior you want to moderate:
+
+> "Users posting spam or advertising links"
+
+The AI understands context and nuance, reducing false positives compared to keyword-based moderation.
+
+Available actions:
+- **Mute** — Temporarily restrict messaging (configurable duration)
+- **Kick** — Remove from group (can rejoin)
+- **Ban** — Permanently remove from group
+
+## Channels
+
+**Channels** are the messaging platforms your agent connects to. Currently supported:
+
+- **Telegram** — Full support including group management, @mention control, and multi-language fallback
+- **Discord** — Coming soon
+- **Slack** — Coming soon
+
+Each channel has its own configuration options. A single agent can connect to multiple groups within a channel.
+
+## Fallback Language
+
+When the agent can't detect a user's language, it falls back to a configured language. Options include English, Chinese, Korean, Turkish, Indonesian, Russian, and Vietnamese. The default is **Follow user** (auto-detect).

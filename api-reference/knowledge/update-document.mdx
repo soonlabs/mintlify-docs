@@ -1,0 +1,33 @@
+---
+title: "Update Document"
+api: "PUT /api/v1/gateway/{name}/knowledge/{id}"
+description: "Update a knowledge base document"
+---
+
+## Path Parameters
+
+<ParamField path="name" type="string" required>Gateway name.</ParamField>
+<ParamField path="id" type="string" required>Document ID.</ParamField>
+
+## Request Body
+
+<ParamField body="title" type="string">Document title.</ParamField>
+<ParamField body="content" type="string">Document content.</ParamField>
+
+## Response
+
+Returns the updated document object.
+
+```json
+{
+  "code": 0,
+  "message": "OK",
+  "data": {
+    "id": "doc-abc123",
+    "title": "Updated FAQ",
+    "content": "Updated content...",
+    "createdAt": "2025-01-15T10:30:00Z",
+    "updatedAt": "2025-02-01T14:00:00Z"
+  }
+}
+```

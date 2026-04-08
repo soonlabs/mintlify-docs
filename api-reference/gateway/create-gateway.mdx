@@ -1,0 +1,40 @@
+---
+title: "Create Gateway"
+api: "POST /api/v1/gateway"
+description: "Create a new gateway (agent)"
+---
+
+## Request Body
+
+<ParamField body="name" type="string" required>
+  Name for the new agent. Cannot be changed after creation.
+</ParamField>
+
+<ParamField body="model" type="string" required>
+  AI model to use. Options: `gpt-4o`, `gpt-4o-mini`.
+</ParamField>
+
+<ParamField body="telegramToken" type="string">
+  Telegram bot token from @BotFather.
+</ParamField>
+
+## Response
+
+Returns the created gateway object.
+
+```json
+{
+  "code": 0,
+  "message": "OK",
+  "data": {
+    "name": "my-agent",
+    "slotId": "slot-abc123",
+    "status": {
+      "ready": false,
+      "suspended": false
+    }
+  }
+}
+```
+
+<Note>The gateway takes 20-30 seconds to provision. Poll [List Gateways](/api-reference/gateway/list-gateways) to check when `status.ready` becomes `true`.</Note>

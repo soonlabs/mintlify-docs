@@ -1,0 +1,38 @@
+---
+title: "Create Document"
+api: "POST /api/v1/gateway/{name}/knowledge"
+description: "Add a new knowledge base document"
+---
+
+## Path Parameters
+
+<ParamField path="name" type="string" required>Gateway name.</ParamField>
+
+## Request Body
+
+<ParamField body="title" type="string" required>
+  Document title.
+</ParamField>
+<ParamField body="content" type="string" required>
+  Document content. Plain text.
+</ParamField>
+
+## Response
+
+Returns the created document object.
+
+```json
+{
+  "code": 0,
+  "message": "OK",
+  "data": {
+    "id": "doc-abc123",
+    "title": "FAQ",
+    "content": "Q: What is NebulaClaw?\nA: An AI community platform...",
+    "createdAt": "2025-01-15T10:30:00Z",
+    "updatedAt": "2025-01-15T10:30:00Z"
+  }
+}
+```
+
+<Tip>Keep documents focused on a single topic for best semantic search results.</Tip>

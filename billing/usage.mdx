@@ -1,0 +1,41 @@
+---
+title: Usage & Tokens
+description: "Track your AI token consumption"
+---
+
+# Usage & Tokens
+
+Every AI response consumes tokens based on the input (user message + context) and output (agent response) length. Monitor your usage to stay within your plan's limits.
+
+## Understanding Tokens
+
+- **1 token** is roughly 4 characters or 0.75 words in English
+- A typical conversation exchange uses 500-2,000 tokens
+- Knowledge base lookups add context tokens to each request
+- Longer personality descriptions increase per-request token usage
+
+## Usage Dashboard
+
+The Billing page shows:
+
+| Metric | Description |
+|--------|-------------|
+| **Tokens Used** | Total tokens consumed this billing period |
+| **Remaining Quota** | Tokens available before hitting your plan limit |
+| **Usage Trend** | Daily token consumption chart |
+
+## Proxy Keys
+
+Generate API keys for direct programmatic access to your agent:
+
+1. Go to **Billing** > **Proxy Keys**
+2. Click **Generate Key**
+3. Copy and store the key securely
+
+<Warning>Proxy keys provide direct API access. Never expose them in client-side code or public repositories.</Warning>
+
+## Billing History
+
+View past invoices and payment records in the **Billing History** section. Each entry shows the date, amount, plan, and payment status.
+
+<Tip>Use GPT-4o-mini for high-volume groups to reduce token consumption by up to 80% compared to GPT-4o, while maintaining good response quality.</Tip>

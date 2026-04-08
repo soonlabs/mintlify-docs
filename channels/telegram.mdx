@@ -1,0 +1,77 @@
+---
+title: Telegram
+description: "Connect your AI agent to Telegram groups"
+---
+
+# Telegram Integration
+
+Connect your NebulaClaw agent to Telegram to provide AI-powered responses and auto-moderation in your groups.
+
+## Prerequisites
+
+- A NebulaClaw account with a created Agent
+- A Telegram account
+
+## Connect Your Bot
+
+<Steps>
+  <Step title="Create a Telegram Bot">
+    1. Open Telegram and search for **@BotFather**
+    2. Send `/newbot`
+    3. Follow the prompts to choose a name and username for your bot
+    4. BotFather will give you a **bot token** (looks like `123456:ABC-DEF1234ghIkl-zyx57W2v...`)
+  </Step>
+
+  <Step title="Add Token to NebulaClaw">
+    1. In the NebulaClaw console, go to your **Agent Overview** page
+    2. Paste the bot token in the **Telegram Token** field
+    3. Click **Save**
+
+    Your agent connects to Telegram automatically.
+  </Step>
+
+  <Step title="Add Bot to a Group">
+    1. Open your Telegram group
+    2. Go to group settings > **Add Members**
+    3. Search for your bot by username and add it
+    4. Promote the bot to **Admin** (required for moderation features like muting and banning)
+  </Step>
+</Steps>
+
+<Warning>Never share your bot token publicly. Anyone with the token can control your bot.</Warning>
+
+## Group Settings
+
+Once a group is connected, it appears in **Moderation > Telegram Groups** with these settings:
+
+### Require @ Mention
+
+When enabled, the bot only responds when explicitly mentioned (e.g., `@yourbot what is this?`). When disabled, the bot monitors and can respond to all messages.
+
+### Fallback Language
+
+The language used when the agent can't detect a user's language:
+
+| Option | Description |
+|--------|-------------|
+| Follow user | Auto-detect user's language (default) |
+| English | Always respond in English |
+| 简体中文 | Always respond in Chinese |
+| 한국어 | Always respond in Korean |
+| Türkce | Always respond in Turkish |
+| Bahasa Indonesia | Always respond in Indonesian |
+| Русский | Always respond in Russian |
+| Tieng Viet | Always respond in Vietnamese |
+
+<Note>Group settings can only be modified when the agent is online.</Note>
+
+## Troubleshooting
+
+**Bot not responding in group?**
+- Ensure the bot is added to the group and promoted to Admin
+- Check that the agent status is green (online) in the console
+- If "Require @" is enabled, mention the bot directly
+
+**Bot responding in wrong language?**
+- Check the Fallback Language setting for that group
+- The agent defaults to the user's detected language; fallback only applies when detection fails
