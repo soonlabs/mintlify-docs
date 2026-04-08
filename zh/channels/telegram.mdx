@@ -1,0 +1,97 @@
+---
+title: Telegram
+description: "将 AI Agent 连接到 Telegram 群组"
+---
+
+# Telegram 集成
+
+将 NebulaClaw Agent 连接到 Telegram，为群组提供 AI 智能回复和自动审核。
+
+## 前提条件
+
+- NebulaClaw 账号和已创建的 Agent
+- Telegram 账号
+
+## 创建 Telegram Bot
+
+<Steps>
+  <Step title="找到 BotFather">
+    打开 Telegram，搜索 **@BotFather** 并打开对话。
+  </Step>
+
+  <Step title="创建新 Bot">
+    1. 发送 `/newbot`
+    2. 输入 Bot 的显示名称（如 "MyCommunity AI"）
+    3. 输入 Bot 的用户名（必须以 `bot` 结尾，如 `mycommunity_ai_bot`）
+    4. BotFather 会返回一个 **Bot Token**
+
+    Token 格式如：`123456789:ABCDefGHIjklMNOpqrsTUVwxyz`
+  </Step>
+
+  <Step title="在控制台绑定 Token">
+    1. 登录 NebulaClaw 控制台
+    2. 进入 **Agent 概览** 页面
+    3. 将 Token 粘贴到 **Telegram Token** 字段
+    4. 点击 **保存**
+
+    Agent 会自动连接 Telegram。
+  </Step>
+</Steps>
+
+<Warning>不要公开分享你的 Bot Token。任何持有 Token 的人都可以控制你的 Bot。</Warning>
+
+## 将 Bot 添加到群组
+
+<Steps>
+  <Step title="添加为成员">
+    打开 Telegram 群组 → 设置 → **添加成员** → 搜索你的 Bot 用户名并添加。
+  </Step>
+
+  <Step title="设为管理员">
+    将 Bot 提升为 **管理员**。这是审核功能（禁言、踢出、封禁）的必要权限。
+  </Step>
+
+  <Step title="完成">
+    发送一条消息测试，Bot 会回复！群组自动出现在 **审核管理 > Telegram 群组** 中。
+  </Step>
+</Steps>
+
+## 获取群组 Chat ID
+
+如果需要手动添加群组，你需要 Chat ID：
+
+1. 将 **@userinfobot** 添加到群组
+2. 它会自动发送群组的 Chat ID（格式如 `-1001234567890`）
+3. 复制这个 ID 到控制台的"添加群组"中
+4. 添加完成后可以将 @userinfobot 移除
+
+<Tip>超级群组的 Chat ID 以 `-100` 开头，这是正常的。</Tip>
+
+## 群组设置
+
+### 需要 @ 提及
+
+| 设置 | 行为 |
+|------|------|
+| **开启** | Bot 只在被 @ 提及时回复（如 `@yourbot 帮我看看`）|
+| **关闭** | Bot 监控所有消息，可能主动回复 |
+
+### 回退语言
+
+当无法检测用户语言时使用的默认语言：
+
+- **跟随用户**（默认）— 自动检测
+- 英语、简体中文、韩语、土耳其语、印尼语、俄语、越南语
+
+<Note>Agent 必须在线才能修改群组设置。离线时设置为只读。</Note>
+
+## 常见问题
+
+**Bot 在群组中不回复？**
+- 确认 Bot 已添加到群组并设为管理员
+- 检查控制台中 Agent 状态是否为绿色（在线）
+- 如果开启了"需要 @"，请直接 @ Bot
+
+**Bot 回复语言不对？**
+- 检查该群组的回退语言设置
+- Agent 默认使用检测到的用户语言，回退语言只在检测失败时使用

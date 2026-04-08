@@ -1,0 +1,65 @@
+---
+title: 快速入门
+description: "5 分钟创建你的第一个 AI Agent"
+---
+
+# 快速入门
+
+五步完成 AI 社区 Agent 的部署。
+
+<Steps>
+  <Step title="注册账号">
+    前往 [NebulaClaw 控制台](https://nonprod.nebulaclaw.ai/login)，使用 Google 账号登录。
+  </Step>
+
+  <Step title="创建 Agent">
+    登录后点击 **创建 Agent**，输入名称并选择 AI 模型：
+
+    - **GPT-4o** — 最佳质量，推荐大多数场景使用
+    - **GPT-4o-mini** — 更快速、更经济，适合高消息量群组
+
+    <Note>Agent 名称创建后不可更改。</Note>
+  </Step>
+
+  <Step title="接入 Telegram">
+    1. 打开 Telegram，搜索 **@BotFather**
+    2. 发送 `/newbot`，按提示创建机器人
+    3. 复制机器人 Token（格式如 `123456:ABC-DEF1234ghIkl-zyx57W2v...`）
+    4. 在控制台 Agent 概览页粘贴 Token
+    5. 点击 **保存**
+
+    <Tip>保存 Token 后 Agent 会自动连接 Telegram。</Tip>
+  </Step>
+
+  <Step title="配置个性">
+    进入 **个性配置** 页面，选择预设风格：
+
+    | 预设 | 风格 |
+    |------|------|
+    | 友好 | 随和、使用表情、亲切 |
+    | 专业 | 正式、商务风格 |
+    | 创意 | 有想象力、趣味性 |
+    | 简洁 | 简短、直接 |
+
+    也可以选择 **自定义**，编写你自己的个性描述。
+  </Step>
+
+  <Step title="添加到群组">
+    1. 将机器人添加到 Telegram 群组
+    2. 设为 **管理员**（审核功能需要）
+    3. 发送消息测试 — AI Agent 会回复！
+
+    群组会自动出现在 **审核管理 > Telegram 群组** 中。
+  </Step>
+</Steps>
+
+## 下一步
+
+<CardGroup cols={2}>
+  <Card title="审核规则" icon="shield" href="/zh/moderation/rules">
+    为社区设置智能审核
+  </Card>
+  <Card title="知识库" icon="brain" href="/zh/agent/knowledge-base">
+    上传文档让 Agent 能回答问题
+  </Card>
+</CardGroup>
