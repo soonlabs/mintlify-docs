@@ -9,8 +9,8 @@
   },
   "favicon": "/favicon.svg",
   "logo": {
-    "light": "/logo/light.svg",
-    "dark": "/logo/dark.svg",
+    "light": "/logo/wordmark-light.png",
+    "dark": "/logo/wordmark.png",
     "href": "https://nebulaclaw.ai"
   },
   "appearance": {
@@ -35,8 +35,9 @@
   },
   "styling": {
     "eyebrows": "section",
-    "codeblocks": "dark"
+    "codeblocks": "system"
   },
+  "styles": ["styles.css"],
   "navigation": {
     "languages": [
       {
@@ -46,19 +47,18 @@
           "links": [
             {
               "label": "Console",
-              "href": "https://nonprod.nebulaclaw.ai"
+              "href": "https://app.nebulaclaw.ai"
             }
           ],
           "primary": {
             "type": "button",
             "label": "Get Started",
-            "href": "https://nonprod.nebulaclaw.ai/login"
+            "href": "https://app.nebulaclaw.ai/login"
           }
         },
         "footer": {
           "socials": {
             "x": "https://x.com/nebulaclaw",
-            "github": "https://github.com/Manta-Network/Nebulaclaw",
             "telegram": "https://t.me/nebulaclaw"
           }
         },
@@ -91,19 +91,18 @@
           "links": [
             {
               "label": "控制台",
-              "href": "https://nonprod.nebulaclaw.ai"
+              "href": "https://app.nebulaclaw.ai"
             }
           ],
           "primary": {
             "type": "button",
             "label": "开始使用",
-            "href": "https://nonprod.nebulaclaw.ai/login"
+            "href": "https://app.nebulaclaw.ai/login"
           }
         },
         "footer": {
           "socials": {
             "x": "https://x.com/nebulaclaw",
-            "github": "https://github.com/Manta-Network/Nebulaclaw",
             "telegram": "https://t.me/nebulaclaw"
           }
         },
@@ -131,64 +130,8 @@
         ]
       }
     ],
-    "tabs": [
-      {
-        "tab": "API Reference",
-        "groups": [
-          {
-            "group": "Overview",
-            "pages": ["api-reference/overview", "api-reference/authentication"]
-          },
-          {
-            "group": "Auth",
-            "pages": [
-              "api-reference/auth/google-login",
-              "api-reference/auth/user-info",
-              "api-reference/auth/logout"
-            ]
-          },
-          {
-            "group": "Gateway",
-            "pages": [
-              "api-reference/gateway/list-gateways",
-              "api-reference/gateway/create-gateway",
-              "api-reference/gateway/get-gateway",
-              "api-reference/gateway/update-gateway",
-              "api-reference/gateway/delete-gateway"
-            ]
-          },
-          {
-            "group": "Moderation",
-            "pages": [
-              "api-reference/moderation/list-rules",
-              "api-reference/moderation/create-rule",
-              "api-reference/moderation/update-rule",
-              "api-reference/moderation/delete-rule",
-              "api-reference/moderation/list-groups",
-              "api-reference/moderation/add-group",
-              "api-reference/moderation/update-group",
-              "api-reference/moderation/delete-group"
-            ]
-          },
-          {
-            "group": "Knowledge",
-            "pages": [
-              "api-reference/knowledge/list-documents",
-              "api-reference/knowledge/create-document",
-              "api-reference/knowledge/update-document",
-              "api-reference/knowledge/delete-document"
-            ]
-          }
-        ]
-      }
-    ],
     "global": {
       "anchors": [
-        {
-          "anchor": "GitHub",
-          "href": "https://github.com/Manta-Network/Nebulaclaw",
-          "icon": "github"
-        },
         {
           "anchor": "Community",
           "href": "https://t.me/nebulaclaw",

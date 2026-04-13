@@ -21,13 +21,21 @@ Each group displays:
 
 ## Adding a Group
 
-Groups are **auto-detected** when you add the bot to a Telegram group. You can also add one manually:
+Groups must be **registered manually** — simply adding the Bot to a Telegram group does **not** make it appear here. The Bot only responds in groups whose Chat ID is registered in the console.
 
-1. Enter the Telegram Chat ID (e.g., `-1001234567890`)
-2. Select a fallback language
-3. Click **Add Group**
+<Steps>
+  <Step title="Add the Bot to the Telegram group and promote it to admin">
+    The Bot must be a group admin to enforce moderation (mute / kick / ban).
+  </Step>
+  <Step title="Get the Chat ID">
+    Open a private chat with [@userinfobot](https://t.me/userinfobot), tap **Menu → Group** (or **My Group**), and pick the target group from the list — the Chat ID (starts with `-100`) is returned instantly. **No need to add @userinfobot to the group.**
+  </Step>
+  <Step title="Register in the console">
+    In **Moderation → Telegram Groups**, paste the Chat ID, pick a fallback language, and click **Add Group**.
+  </Step>
+</Steps>
 
-<Tip>To find a group's Chat ID, add [@userinfobot](https://t.me/userinfobot) to the group and it will display the Chat ID.</Tip>
+<Warning>Only groups that contain *your* Bot can be registered. Registering a Chat ID where your Bot isn't present will have no effect.</Warning>
 
 ## Group Settings
 
@@ -38,12 +46,12 @@ Groups are **auto-detected** when you add the bot to a Telegram group. You can a
 | **On** | Bot only responds when mentioned (e.g., `@yourbot help`) |
 | **Off** | Bot monitors all messages and may respond proactively |
 
-### Fallback Language
+### Fallback Language (Bot reply language)
 
-When the agent can't detect a user's language, it falls back to this setting:
-
-- **Follow user** (default) — Auto-detect and match
-- **English**, **Chinese**, **Korean**, **Turkish**, **Indonesian**, **Russian**, **Vietnamese**
+| Option | Behavior |
+|--------|----------|
+| **Follow user** (default) | Bot auto-detects each message's language and replies in kind |
+| A specific language (EN / ZH / KO / TR / ID / RU / VI) | Bot always replies in that language, ignoring the user's language |
 
 <Warning>Group settings can only be modified when the agent is online. If the agent is offline, settings are read-only.</Warning>
 

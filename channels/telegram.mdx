@@ -1,77 +1,93 @@
 ---
 title: Telegram
-description: "Connect your AI agent to Telegram groups"
+description: "Connect your Bot to Telegram groups"
 ---
 
 # Telegram Integration
 
-Connect your NebulaClaw agent to Telegram to provide AI-powered responses and auto-moderation in your groups.
+NebulaClaw currently supports **Telegram** as its messaging channel. Bots are hosted by the platform — **no BotFather interaction required**.
 
 ## Prerequisites
 
-- A NebulaClaw account with a created Agent
-- A Telegram account
+- A purchased Bot ($9.9 / bot) with persona and model configured
+- A Telegram account and the group(s) you want to connect
 
-## Connect Your Bot
+## Add the Bot to a Group
 
 <Steps>
-  <Step title="Create a Telegram Bot">
-    1. Open Telegram and search for **@BotFather**
-    2. Send `/newbot`
-    3. Follow the prompts to choose a name and username for your bot
-    4. BotFather will give you a **bot token** (looks like `123456:ABC-DEF1234ghIkl-zyx57W2v...`)
+  <Step title="Get the Bot username">
+    Find your Bot's `@botUsername` in the console Bot overview page, or click **Open in Telegram** to open a private chat.
   </Step>
 
-  <Step title="Add Token to NebulaClaw">
-    1. In the NebulaClaw console, go to your **Agent Overview** page
-    2. Paste the bot token in the **Telegram Token** field
-    3. Click **Save**
-
-    Your agent connects to Telegram automatically.
+  <Step title="Invite to group">
+    In the Telegram group → Add members → search `@botUsername` and add it.
   </Step>
 
-  <Step title="Add Bot to a Group">
-    1. Open your Telegram group
-    2. Go to group settings > **Add Members**
-    3. Search for your bot by username and add it
-    4. Promote the bot to **Admin** (required for moderation features like muting and banning)
+  <Step title="Promote to admin">
+    Make the Bot a **group admin**. This is required for moderation actions (mute / kick / ban) to work.
+
+    <Warning>A non-admin Bot can reply but **cannot enforce moderation**.</Warning>
+  </Step>
+
+  <Step title="Register the group in the console">
+    Go to **Moderation → Telegram Groups**, paste the group Chat ID (starts with `-100`), and click **Add Group**.
   </Step>
 </Steps>
 
-<Warning>Never share your bot token publicly. Anyone with the token can control your bot.</Warning>
+## Get the Chat ID
 
-## Group Settings
+Open a **private chat** with [@userinfobot](https://t.me/userinfobot) — **don't add it to the group**:
 
-Once a group is connected, it appears in **Moderation > Telegram Groups** with these settings:
+1. Tap the **Menu** button at the bottom
+2. Select **Group** (all groups you administer) or **My Group** (groups you created)
+3. Pick the target group from the list
+4. The bot returns the Chat ID (format `-1001234567890`) instantly
 
-### Require @ Mention
+<Tip>Supergroup Chat IDs always start with `-100` — that's by Telegram spec. The same menu also offers **Channel / Forum** for channel and forum IDs.</Tip>
 
-When enabled, the bot only responds when explicitly mentioned (e.g., `@yourbot what is this?`). When disabled, the bot monitors and can respond to all messages.
+## Per-Group Settings
 
-### Fallback Language
+Each group in **Moderation → Telegram Groups** can be configured individually:
 
-The language used when the agent can't detect a user's language:
+### Require Mention
 
-| Option | Description |
-|--------|-------------|
-| Follow user | Auto-detect user's language (default) |
-| English | Always respond in English |
-| 简体中文 | Always respond in Chinese |
-| 한국어 | Always respond in Korean |
-| Türkce | Always respond in Turkish |
-| Bahasa Indonesia | Always respond in Indonesian |
-| Русский | Always respond in Russian |
-| Tieng Viet | Always respond in Vietnamese |
+| Setting | Behavior |
+|---------|----------|
+| **On** | Bot replies only when `@botUsername` is mentioned |
+| **Off** | Bot observes all messages and replies proactively when applicable |
 
-<Note>Group settings can only be modified when the agent is online.</Note>
+> For smaller boutique groups, turn Require Mention off for a more active presence. For high-volume groups, keep it on to conserve tokens.
 
-## Troubleshooting
+### Fallback Language (Bot reply language)
 
-**Bot not responding in group?**
-- Ensure the bot is added to the group and promoted to Admin
-- Check that the agent status is green (online) in the console
-- If "Require @" is enabled, mention the bot directly
+Controls what language the Bot replies in for this group:
 
-**Bot responding in wrong language?**
-- Check the Fallback Language setting for that group
-- The agent defaults to the user's detected language; fallback only applies when detection fails
+- **Follow user** (default, `auto`) — the Bot auto-detects each message's language and replies in kind
+- A specific language — the Bot always replies in that language regardless of the user's language:
+
+  > English, Simplified Chinese, Korean, Turkish, Indonesian, Russian, Vietnamese
+
+**Examples**:
+
+- A Chinese project's Chinese-speaking group → set **Simplified Chinese** so the Bot doesn't switch to English on the occasional English message
+- A cross-border multilingual community → keep **Follow user**, the Bot matches each member's language
+- An official English-facing group → set **English** for a consistent tone
+
+<Note>Per-group settings can only be modified while the Bot is online.</Note>
+
+## FAQ
+
+<AccordionGroup>
+  <Accordion title="Bot isn't replying at all">
+    Check in order: ① Bot is in the group AND is a group admin; ② Group Chat ID is added under **Moderation → Telegram Groups**; ③ If Require Mention is on, actually @-mention the Bot; ④ The Bot status is Online (green) in the console.
+  </Accordion>
+  <Accordion title="Bot can reply but can't mute / kick">
+    The Bot must be a **group admin** to enforce moderation. Promote it from member to Admin.
+  </Accordion>
+  <Accordion title="Bot replies in the wrong language">
+    In **Moderation → Telegram Groups**, change the group's **Fallback Language** to the language you want. Or leave it as **Follow user** (default) to have the Bot auto-switch per user.
+  </Accordion>
+  <Accordion title="Can one Bot manage multiple groups?">
+    Yes. Add the same Bot to multiple groups; each group is configured independently in **Moderation → Telegram Groups**.
+  </Accordion>
+</AccordionGroup>

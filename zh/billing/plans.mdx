@@ -1,35 +1,78 @@
 ---
-title: 套餐与定价
-description: "选择适合你社区的套餐"
+title: 定价
+description: "按 Bot 一次购买，没有月费"
 ---
 
-# 套餐与定价
+# 定价
 
-NebulaClaw 提供灵活的套餐以满足不同社区需求。
+NebulaClaw 采用**按 Bot 一次性付费**模式——没有月费、没有订阅层级、没有隐藏费用。
 
-## 套餐对比
+## 核心定价
 
-| 功能 | 免费版 | 专业版 | 企业版 |
-|------|--------|--------|--------|
-| AI 消息 | 有限 | 更高额度 | 自定义 |
-| AI 模型 | GPT-4o-mini | GPT-4o + mini | 全部模型 |
-| 知识文档 | 5 个 | 无限 | 无限 |
-| 审核规则 | 3 条 | 无限 | 无限 |
-| 数据分析 | 基础 | 高级 | 高级 + 导出 |
-| 支持 | 社区 | 优先 | 专属 |
+<Card title="$9.9 / Bot" icon="bot">
+  **一次购买，立即启用。**
 
-## 升级套餐
+  - 1 个 7×24 全天候 AI Bot
+  - 初始 Token 额度
+  - 全量功能：知识库问答、智能审核、数据分析
+  - 全量 7 款 AI 模型可选（Economy / Balanced / Premium 三档）
+  - 多群组管理、自动语言识别
+</Card>
+
+## Token 额度
+
+Bot 运行消耗的 Token（AI 推理）按使用计量：
+
+- **初始额度**：购买 Bot 时附赠
+- **用完后**：在控制台 **Billing** 购买任意 **充值包** 即可继续运行
+- **永不过期**：充值额度没有有效期，不会被清零
+
+<Tip>充值包按面额计价——大包单位价格更低。高频群组可一次性购买大额度包长期使用。</Tip>
+
+## 一个 Bot 能管多少群？
+
+目前每个账号 **1 个 Bot**，但这**一个 Bot 可以同时服务多个 Telegram 群组**：
+
+- 把同一个 `@botUsername` 加到每个群并设为管理员
+- 在 **Moderation → Telegram Groups** 分别登记每个群的 Chat ID
+- 每个群独立配置 **Require Mention**、**Fallback Language**
+- 审核规则、知识库在 Bot 级别共享，一次配置覆盖所有群
+
+<Info>**多 Bot（单账号创建多个独立 Bot）** 规划中，允许为不同项目 / 不同定位分别配置独立 Bot。上线前可先用单 Bot 管理多群组。</Info>
+
+## 购买流程
 
 <Steps>
-  <Step title="进入计费">
-    从侧边栏进入 **计费** 页面。
+  <Step title="进入定价页">
+    前往 [定价页](https://app.nebulaclaw.ai/pricing)，点击 **立即开始**。
   </Step>
-  <Step title="选择套餐">
-    点击 **升级**，选择目标套餐。
+  <Step title="完成支付">
+    通过 Stripe 安全支付，支持主流信用卡。
   </Step>
-  <Step title="完成付款">
-    输入支付信息并确认，套餐立即生效。
+  <Step title="返回控制台">
+    支付完成自动跳回创建向导，开始配置你的 Bot。
   </Step>
 </Steps>
 
-<Note>套餐变更立即生效，按剩余计费周期比例收费。</Note>
+## 常见问题
+
+<AccordionGroup>
+  <Accordion title="支持哪些支付方式？">
+    通过 Stripe 处理，支持主流信用卡 / 借记卡。
+  </Accordion>
+  <Accordion title="可以退款吗？">
+    **不支持退款。** 购买 Bot 或充值包后款项不予退回——购买前请确认需求。已购充值包额度**永不过期**，可长期使用。
+  </Accordion>
+  <Accordion title="可以开发票吗？">
+    **当前版本不提供正式发票（Invoice / Tax Receipt）。** 付款记录可在 **Billing → History** 查看；如需会计凭证可截图该页或联系支持团队确认。
+  </Accordion>
+  <Accordion title="充值额度会过期吗？">
+    **不会。** 充值包额度永久保留，直到用完为止。
+  </Accordion>
+  <Accordion title="一个 Bot 可以管多少个群？">
+    没有硬性上限——同一个 `@botUsername` 可加入多个群，在 **Moderation → Telegram Groups** 分别登记 Chat ID 即可。所有群共用该 Bot 的审核规则和知识库，但每群可独立配置 Require Mention / Fallback Language。
+  </Accordion>
+  <Accordion title="可以创建多个独立 Bot 吗？">
+    当前每个账号 **1 个 Bot**。多 Bot 功能规划中。
+  </Accordion>
+</AccordionGroup>

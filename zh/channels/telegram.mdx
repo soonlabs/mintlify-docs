@@ -1,97 +1,93 @@
 ---
 title: Telegram
-description: "将 AI Agent 连接到 Telegram 群组"
+description: "将 Bot 接入 Telegram 群组"
 ---
 
 # Telegram 集成
 
-将 NebulaClaw Agent 连接到 Telegram，为群组提供 AI 智能回复和自动审核。
+NebulaClaw 目前支持 **Telegram** 作为消息渠道。Bot 由平台自动托管——**你不需要和 @BotFather 打交道**。
 
 ## 前提条件
 
-- NebulaClaw 账号和已创建的 Agent
-- Telegram 账号
+- 已购买 Bot（$9.9 / Bot）并完成人设、模型配置
+- 一个 Telegram 账号和要接入的群组
 
-## 创建 Telegram Bot
-
-<Steps>
-  <Step title="找到 BotFather">
-    打开 Telegram，搜索 **@BotFather** 并打开对话。
-  </Step>
-
-  <Step title="创建新 Bot">
-    1. 发送 `/newbot`
-    2. 输入 Bot 的显示名称（如 "MyCommunity AI"）
-    3. 输入 Bot 的用户名（必须以 `bot` 结尾，如 `mycommunity_ai_bot`）
-    4. BotFather 会返回一个 **Bot Token**
-
-    Token 格式如：`123456789:ABCDefGHIjklMNOpqrsTUVwxyz`
-  </Step>
-
-  <Step title="在控制台绑定 Token">
-    1. 登录 NebulaClaw 控制台
-    2. 进入 **Agent 概览** 页面
-    3. 将 Token 粘贴到 **Telegram Token** 字段
-    4. 点击 **保存**
-
-    Agent 会自动连接 Telegram。
-  </Step>
-</Steps>
-
-<Warning>不要公开分享你的 Bot Token。任何持有 Token 的人都可以控制你的 Bot。</Warning>
-
-## 将 Bot 添加到群组
+## 把 Bot 加入群组
 
 <Steps>
-  <Step title="添加为成员">
-    打开 Telegram 群组 → 设置 → **添加成员** → 搜索你的 Bot 用户名并添加。
+  <Step title="获取 Bot 用户名">
+    在控制台 Bot 概览页（Agent 详情）可以看到 Bot 的 `@botUsername`，也可以点 **在 Telegram 中打开** 直接跳转私聊。
+  </Step>
+
+  <Step title="邀请加入群">
+    打开 Telegram 群组 → 添加成员 → 搜索 `@botUsername` 加入。
   </Step>
 
   <Step title="设为管理员">
-    将 Bot 提升为 **管理员**。这是审核功能（禁言、踢出、封禁）的必要权限。
+    把 Bot 提升为 **群管理员**。这是审核功能（mute / kick / ban）生效的必要权限。
+
+    <Warning>如果 Bot 只是普通成员，它能回复消息但**无法执行审核动作**。</Warning>
   </Step>
 
-  <Step title="完成">
-    发送一条消息测试，Bot 会回复！群组自动出现在 **审核管理 > Telegram 群组** 中。
+  <Step title="在控制台添加群组">
+    进入 **Moderation → Telegram Groups**，在输入框粘贴群组 Chat ID（`-100` 开头），点击 **添加群组**。
   </Step>
 </Steps>
 
-## 获取群组 Chat ID
+## 获取 Chat ID
 
-如果需要手动添加群组，你需要 Chat ID：
+打开 [@userinfobot](https://t.me/userinfobot) 的**私聊**（不需要加它进群）：
 
-1. 将 **@userinfobot** 添加到群组
-2. 它会自动发送群组的 Chat ID（格式如 `-1001234567890`）
-3. 复制这个 ID 到控制台的"添加群组"中
-4. 添加完成后可以将 @userinfobot 移除
+1. 点击底部 **Menu** 按钮
+2. 选择 **Group**（所有你管理的群）或 **My Group**（你自己创建的群）
+3. 从弹出的列表中选择目标群组
+4. Bot 立即返回该群的 Chat ID（格式 `-1001234567890`）
 
-<Tip>超级群组的 Chat ID 以 `-100` 开头，这是正常的。</Tip>
+<Tip>超级群组（Supergroup）的 Chat ID 一定以 `-100` 开头，这是 Telegram 协议规范。同理可用 **Channel / Forum** 选项获取频道或 Forum 的 ID。</Tip>
 
 ## 群组设置
 
-### 需要 @ 提及
+在 **Moderation → Telegram Groups** 每个群组可单独配置：
+
+### Require Mention（需要 @）
 
 | 设置 | 行为 |
 |------|------|
-| **开启** | Bot 只在被 @ 提及时回复（如 `@yourbot 帮我看看`）|
-| **关闭** | Bot 监控所有消息，可能主动回复 |
+| **开启** | Bot 只在被 `@botUsername` 提及时回复 |
+| **关闭** | Bot 监听所有消息，满足条件时主动回复 |
 
-### 回退语言
+> 对于低消息量的精品群，关闭"需要 @"让 Bot 显得更主动；高消息量群建议开启以节省 Token。
 
-当无法检测用户语言时使用的默认语言：
+### Fallback Language（Bot 回复语言）
 
-- **跟随用户**（默认）— 自动检测
-- 英语、简体中文、韩语、土耳其语、印尼语、俄语、越南语
+控制 Bot 在该群的回复语言：
 
-<Note>Agent 必须在线才能修改群组设置。离线时设置为只读。</Note>
+- **跟随用户**（默认，"auto"）—— Bot 自动识别每条消息的语种并用对应语言回复
+- 指定固定语言——Bot 始终用该语言回复，忽略用户语言：
+
+  > 英语、简体中文、韩语、土耳其语、印尼语、俄语、越南语
+
+**场景举例**：
+
+- 中文项目方的中文群 → 设 **简体中文**，避免 Bot 在少数英文消息下切换成英文回复
+- 跨境多语社区 → 保持 **跟随用户**，Bot 自动匹配每个人的语言
+- 面向海外的官方英文群 → 设 **英语**，统一输出语调
+
+<Note>Bot 在线时才能修改群组设置。离线时设置为只读。</Note>
 
 ## 常见问题
 
-**Bot 在群组中不回复？**
-- 确认 Bot 已添加到群组并设为管理员
-- 检查控制台中 Agent 状态是否为绿色（在线）
-- 如果开启了"需要 @"，请直接 @ Bot
-
-**Bot 回复语言不对？**
-- 检查该群组的回退语言设置
-- Agent 默认使用检测到的用户语言，回退语言只在检测失败时使用
+<AccordionGroup>
+  <Accordion title="Bot 在群组里完全不回复">
+    依次排查：① Bot 已加群且设为群管理员；② 群组 Chat ID 已在 **Moderation → Telegram Groups** 添加；③ 如果开启了"需要 @"，直接 @ Bot 测试；④ 控制台 Bot 状态显示为在线（绿色）。
+  </Accordion>
+  <Accordion title="Bot 能回复但无法禁言 / 踢人">
+    Bot 必须是**群管理员**才能执行审核动作。把它从普通成员提升为 Admin 即可。
+  </Accordion>
+  <Accordion title="Bot 回复的语言不对">
+    进入 **Moderation → Telegram Groups**，把该群的 **Fallback Language** 改成你想要的固定语言即可。如果希望 Bot 按用户语言自动切换，设为 **跟随用户**（默认）。
+  </Accordion>
+  <Accordion title="可以一个 Bot 管多个群吗？">
+    可以。同一个 Bot 可以被加入多个群组，每个群在 **Moderation → Telegram Groups** 独立配置。
+  </Accordion>
+</AccordionGroup>

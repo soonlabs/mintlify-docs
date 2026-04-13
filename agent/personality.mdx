@@ -1,46 +1,54 @@
 ---
-title: Personality Configuration
-description: "Control how your AI agent communicates"
+title: Persona Configuration
+description: "Control how your AI Bot communicates"
 ---
 
-# Personality Configuration
+# Persona Configuration
 
-Personality defines the tone, style, and behavior of your AI agent. You can choose a preset or write a fully custom personality.
+The **Persona** defines the Bot's tone, speaking style, and behavior. NebulaClaw ships with four community role presets — and also supports fully custom personas.
 
-## Preset Personalities
+## Four Community Presets
 
-Select from four built-in profiles:
+| Preset | Best for | Tone highlights |
+|--------|----------|-----------------|
+| **Project Community** | Web3 projects, product communities | Professional, patient, grounded in project docs + anti-shill |
+| **KOL / Alpha Group** | Paid alpha / research groups | Neutral, high signal-to-noise, DYOR reminders, spam filtering |
+| **Trader Community** | Trading discussion groups | Market-neutral, no investment advice, risk disclosures |
+| **Meme Community** | Degen / meme-coin groups | High-energy, meme-aware, but strict on scam links and fake airdrops |
 
-| Preset | Description |
-|--------|-------------|
-| **Friendly** | Casual and approachable. Uses emoji, conversational tone, and warm language. |
-| **Professional** | Formal and structured. Business-appropriate responses with clear formatting. |
-| **Creative** | Imaginative and playful. Uses metaphors, humor, and creative expression. |
-| **Concise** | Brief and direct. Minimal words, maximum clarity. No unnecessary filler. |
+Each preset ships with a matching **avatar** and tuned persona prompt. Clicking a preset applies it instantly and the chat preview on the right updates live.
 
-Click any preset card to apply it. The chat preview on the right updates immediately so you can see how the agent will respond.
+## Custom Persona
 
-## Custom Personality
+Select **Custom** to edit the persona prompt directly. Common dimensions to customize:
 
-Select **Custom** to write your own personality description. This is a free-form text field where you describe:
+- How the Bot speaks (tone, formality, preferred language)
+- Topics to emphasize or avoid
+- Project-specific routing (e.g. "route staking questions to /staking")
+- Specific role definition or background
 
-- How the agent should speak (tone, formality, language style)
-- What topics to focus on or avoid
-- Any specific instructions or constraints
-- Character traits or persona details
+**Example (appended on top of the "Project Community" preset):**
 
-**Example:**
 ```
-You are a helpful Web3 community manager. Respond in a friendly but knowledgeable tone. 
-Always link to official documentation when answering technical questions. 
-Use simple language to explain complex blockchain concepts.
-Never give financial advice.
+You are the official community manager for [ProjectName].
+- For staking questions, route users to the /staking docs
+- Do not discuss token price or give investment advice
+- Proactively warn users about messages mentioning "guaranteed returns" or "cashback rewards"
+- Maintain a professional, friendly tone
 ```
 
-<Tip>Switching between presets preserves your custom text. You can experiment with presets and switch back to Custom without losing your work.</Tip>
+<Tip>Switching to a different preset **preserves your custom text** — compare presets freely and switch back to Custom when ready.</Tip>
+
+## Persona vs. Knowledge Base — which goes where?
+
+| Put in the Persona | Put in the Knowledge Base |
+|-------------------|--------------------------|
+| **How** to speak — tone, attitude, taboo topics | **What** to say — specific FAQs, product facts, rules |
+| Constant across every conversation | Retrieved on demand |
+| Keep short (shipped with every request) | Can hold many documents |
+
+<Warning>A long persona prompt adds to **every** response's token cost. **Keep concrete knowledge in the knowledge base, not the persona.**</Warning>
 
 ## Saving Changes
 
-After making changes, click **Save** at the bottom of the page. The button only appears when you have unsaved changes.
-
-<Note>Changes take effect immediately after saving — no restart required.</Note>
+The **Save** button appears at the bottom of the page when you have unsaved changes. Saves take effect immediately — no Bot restart required.

@@ -1,65 +1,195 @@
 ---
 title: Quickstart
-description: "Create your first AI agent in 5 minutes"
+description: "Deploy your first AI community assistant in 5 minutes"
 ---
 
 # Quickstart
 
-Get your AI community agent up and running in five steps.
+NebulaClaw **auto-creates and hosts your Telegram Bot** — you never need to touch BotFather. Here's the flow:
 
 <Steps>
-  <Step title="Sign up">
-    Go to the [NebulaClaw Console](https://nonprod.nebulaclaw.ai/login) and sign in with your Google account.
+  <Step title="Sign in">
+    Go to the [NebulaClaw Console](https://app.nebulaclaw.ai/login) and sign in with your **Google account**. A workspace is created automatically on first login.
   </Step>
 
-  <Step title="Create your Agent">
-    After signing in, click **Create Agent**. Give your agent a name and select an AI model:
+  <Step title="Purchase bot credits">
+    Bot creation is a **one-time purchase per bot** — no monthly subscription, no complex tiers:
 
-    - **GPT-4o** — Best quality, recommended for most use cases
-    - **GPT-4o-mini** — Faster and more cost-effective for high-volume groups
+    - **$9.9 / bot** (one-time, instant activation)
+    - Each bot comes with starter token credits
+    - Top up anytime from the console as you go
+    - **Purchased credits never expire**
 
-    <Note>Agent names cannot be changed after creation.</Note>
+    <Tip>Clicking **Get Started** redirects to checkout and returns to the creation wizard on success.</Tip>
   </Step>
 
-  <Step title="Connect Telegram">
-    1. Open Telegram and search for **@BotFather**
-    2. Send `/newbot` and follow the prompts to create a new bot
-    3. Copy the bot token (looks like `123456:ABC-DEF1234ghIkl-zyx57W2v...`)
-    4. Paste the token in the **Telegram Token** field on the Agent Overview page
-    5. Click **Save**
+  <Step title="Pick a community preset">
+    Choose the preset closest to your community:
 
-    <Tip>Your agent will automatically connect to Telegram once the token is saved.</Tip>
+    | Preset | Best for |
+    |--------|----------|
+    | **Project Community** | Web3 projects, product communities — Q&A + anti-shill |
+    | **KOL / Alpha Group** | Paid alpha / research groups — signal-to-noise control, DYOR reminders |
+    | **Trader Community** | Trading discussion — neutral, no investment advice |
+    | **Meme Community** | Degen / meme-coin groups — high-energy vibes + strict scam-link enforcement |
+
+    Each preset ships with a matching persona prompt. You can further **customize** it with project-specific instructions.
   </Step>
 
-  <Step title="Configure Personality">
-    Go to the **Personality** page and choose a preset:
+  <Step title="Pick a model tier">
+    Three tiers to choose from:
 
-    | Preset | Style |
-    |--------|-------|
-    | Friendly | Casual, uses emoji, approachable |
-    | Professional | Formal, business-like tone |
-    | Creative | Imaginative, playful responses |
-    | Concise | Brief, to-the-point answers |
+    | Tier | Example models | Best for |
+    |------|---------------|----------|
+    | **Economy** | `gpt-4.1-nano`, `gpt-4o-mini` | High volume, cost-sensitive |
+    | **Balanced** (recommended) | `gpt-5-mini`, `gpt-4.1-mini` | General use, balanced quality and cost |
+    | **Premium** | `gpt-5.2`, `gpt-4o`, `gpt-4.1` | Demanding Q&A, complex moderation |
 
-    Or select **Custom** and write your own personality description.
+    <Note>Default is Balanced with `gpt-5-mini`. You can switch the model later in Agent settings.</Note>
   </Step>
 
-  <Step title="Add to a Group">
-    1. Add your bot to a Telegram group
-    2. Promote it to **Admin** (required for moderation features)
-    3. Send a message — your AI agent will respond!
+  <Step title="Name and create the Bot">
+    Give the Bot a slug (lowercase letters, numbers, hyphens — max 63 chars), e.g. `my-project-bot`.
 
-    The group will automatically appear in **Moderation > Telegram Groups**.
+    <Frame>
+      <img src="/images/create-bot/03-name-bot.png" alt="Create wizard · Step 3 Name Bot" />
+    </Frame>
+
+    Click **Create Bot**. The platform automatically:
+
+    1. Assigns and hosts a Telegram Bot from the Bot Pool
+    2. Returns a `@botUsername` you can use in Telegram immediately
+    3. Boots the Agent gateway — ready in about 30 seconds
+
+    On success you'll see a confirmation page with your **Bot's `@username`**, the **Telegram deep link**, and the next 3 onboarding steps:
+
+    <Frame>
+      <img src="/images/create-bot/04-bot-created.png" alt="Bot created successfully — shows @botUsername and next steps" />
+    </Frame>
+
+    <Tip>Click the blue `t.me/<botUsername>` link to jump straight to the Bot chat.</Tip>
+    <Warning>**The Bot's avatar and username cannot be changed after creation.**</Warning>
+  </Step>
+
+  <Step title="Add the Bot to your group">
+    1. In your Telegram group → Add members → search `@botUsername` and add it
+    2. **Promote the Bot to group admin** (required for moderation)
+    3. In the console, go to **Moderation → Telegram Groups** and **add the group ID**
+
+    ### Get the group ID with @userinfobot (3 steps)
+
+    **No need to add @userinfobot to the group** — you query it from the private chat.
+
+    <Steps>
+      <Step title="Open @userinfobot and tap Menu → Group / My Group">
+        Search [@userinfobot](https://t.me/userinfobot) on Telegram → tap **Start** → tap **Menu** to open the 9-tile menu:
+
+        - **Group** = all groups where you're an admin
+        - **My Group** = groups you created
+
+        <Frame>
+          <img src="/images/chat-id/01-menu-grid.png" alt="@userinfobot 9-tile menu with Group / My Group entries" />
+        </Frame>
+      </Step>
+      <Step title="Select the target group from the list">
+        A **Choose a Group** view appears. Tap the group you want to connect (note: **the group must have Topics disabled** — a requirement of @userinfobot).
+
+        <Frame>
+          <img src="/images/chat-id/02-choose-group.png" alt="Choose a Group list — pick the target" />
+        </Frame>
+      </Step>
+      <Step title="Copy the Chat ID into the console">
+        The bot replies with `Id: -100xxxxxxxxx`. Copy this ID into **Moderation → Telegram Groups** in the console.
+
+        <Frame>
+          <img src="/images/chat-id/03-chat-id-result.png" alt="Chat ID returned by @userinfobot" />
+        </Frame>
+      </Step>
+    </Steps>
+
+    <Tip>The same menu also retrieves **Channel / Forum** IDs.</Tip>
+  </Step>
+
+  <Step title="Upload knowledge">
+    Go to **Knowledge** and upload anything you want the Agent to answer from:
+
+    - Product / project FAQ
+    - Whitepaper / doc summaries
+    - Community rules
+    - Troubleshooting notes
+
+    Content is semantically indexed — users can ask "how do I withdraw?" or "what's the fee?" and the Agent will answer even without keyword hits.
+
+    <Tip>The persona prompt controls *how* the Agent speaks; the knowledge base controls *what* it says. Putting content in the knowledge base is more effective than stuffing it into the prompt.</Tip>
+  </Step>
+
+  <Step title="Set up moderation rules">
+    Go to **Moderation → Rules** and click **Add Rule**. Each rule has:
+
+    - **Description** (natural language) — one sentence describing the trigger
+    - **Action**: `mute` (duration or permanent) / `kick` (can rejoin) / `ban` (permanent)
+
+    **Recommended baseline ruleset** (copy-paste ready):
+
+    | Trigger | Action |
+    |---------|--------|
+    | Insults, personal attacks, continued provocation, or defamation — including against the project, team, or community members | `kick` |
+    | Scams or phishing messages | `kick` |
+    | Requesting or disclosing private keys / seed phrases | `ban` |
+    | Spam / advertising | `mute 24h` |
+    | Malicious links | `mute 1h` |
+    | Fake airdrops, referral-farming schemes | `mute 24h` |
+
+    The AI judges by context — no keyword lists needed. Every action is logged in **Audit** for review.
+  </Step>
+
+  <Step title="Check your analytics">
+    **Analytics → Dashboard**:
+
+    - Daily / weekly message volume
+    - Active users
+    - Sentiment trend
+    - Moderation action counts
+
+    **Billing → Usage** shows current-month token consumption and remaining credits.
   </Step>
 </Steps>
 
-## Next Steps
+## FAQ
+
+<AccordionGroup>
+  <Accordion title="Why isn't my Bot responding?">
+    Check two things: ① The Bot must be a group admin; ② The group ID must be added in **Moderation → Telegram Groups**. Either missing and the Agent won't respond in that group.
+  </Accordion>
+  <Accordion title="Moderation false-positives hitting normal users">
+    Go to **Moderation → Rules** and make the description more specific. For example, refine "promotional external links" to "invite links to non-whitelisted domains". The AI calibrates to your description.
+  </Accordion>
+  <Accordion title="How do I make the Agent more accurate?">
+    Expand the knowledge base first, then tune the persona. Content in the knowledge base beats bloating the persona prompt.
+  </Accordion>
+  <Accordion title="What happens if token credits run out?">
+    The bot pauses responding. Buy any top-up pack from **Billing** to resume immediately — **top-up credits never expire**.
+  </Accordion>
+  <Accordion title="Can I run multiple Bots?">
+    Currently **one Bot per account**. But a single Bot can **serve multiple Telegram groups** — add the same `@botUsername` to each group as admin, then register each Chat ID in **Moderation → Telegram Groups**.
+
+    **Multi-Bot** (multiple independent Bots per account) is on the roadmap — announcements will ship here and on official channels.
+  </Accordion>
+</AccordionGroup>
+
+## Next steps
 
 <CardGroup cols={2}>
-  <Card title="Moderation Rules" icon="shield" href="/moderation/rules">
-    Set up auto-moderation for your community
+  <Card title="Moderation best practices" icon="shield" href="/moderation/rules">
+    Write precise natural-language moderation policies
   </Card>
-  <Card title="Knowledge Base" icon="brain" href="/agent/knowledge-base">
-    Upload documents so your agent can answer questions
+  <Card title="Knowledge base" icon="brain" href="/agent/knowledge-base">
+    How to feed the Agent so it answers accurately
+  </Card>
+  <Card title="Analytics" icon="chart-line" href="/analytics/dashboard">
+    Read your community health metrics
+  </Card>
+  <Card title="Telegram channel" icon="paper-plane" href="/channels/telegram">
+    Group management + language settings
   </Card>
 </CardGroup>

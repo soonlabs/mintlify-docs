@@ -1,41 +1,44 @@
 ---
 title: Usage & Tokens
-description: "Track your AI token consumption"
+description: "Track AI token consumption and top up credits"
 ---
 
 # Usage & Tokens
 
-Every AI response consumes tokens based on the input (user message + context) and output (agent response) length. Monitor your usage to stay within your plan's limits.
+Every AI response consumes tokens based on input (user message + context) and output (agent response) length. Monitor your balance on the **Billing** page.
 
 ## Understanding Tokens
 
-- **1 token** is roughly 4 characters or 0.75 words in English
-- A typical conversation exchange uses 500-2,000 tokens
-- Knowledge base lookups add context tokens to each request
-- Longer personality descriptions increase per-request token usage
+- **1 token** ≈ 4 English characters or 0.75 words
+- A typical conversational exchange uses 500–2,000 tokens
+- Knowledge base lookups add context tokens per request
+- Longer persona descriptions increase per-request consumption
 
 ## Usage Dashboard
 
-The Billing page shows:
+The **Billing** page shows:
 
 | Metric | Description |
 |--------|-------------|
-| **Tokens Used** | Total tokens consumed this billing period |
-| **Remaining Quota** | Tokens available before hitting your plan limit |
+| **Tokens Used** | Total tokens consumed (priced in USD) |
+| **Remaining Credits** | Starter credits + top-up balance |
 | **Usage Trend** | Daily token consumption chart |
+| **Top-up Packs** | Available credit packs to purchase |
 
-## Proxy Keys
+## When Credits Run Out
 
-Generate API keys for direct programmatic access to your agent:
+The bot pauses responding. Buy any **top-up pack** from the Billing page — your bot resumes immediately after checkout.
 
-1. Go to **Billing** > **Proxy Keys**
-2. Click **Generate Key**
-3. Copy and store the key securely
+<Warning>**Top-up credits never expire** — buy once, use whenever. No reset clocks to worry about.</Warning>
 
-<Warning>Proxy keys provide direct API access. Never expose them in client-side code or public repositories.</Warning>
+## Reducing Token Consumption
+
+- High-volume groups should pick the **Economy tier** (`gpt-4.1-nano` / `gpt-4o-mini`) — up to **90%** cheaper than Premium while still producing solid responses
+- Put FAQs in the **knowledge base** rather than bloating the persona prompt — the knowledge base is retrieved on demand; the prompt ships with every request
+- Write specific, concrete moderation rule descriptions to reduce inference overhead
 
 ## Billing History
 
-View past invoices and payment records in the **Billing History** section. Each entry shows the date, amount, plan, and payment status.
+**Billing → History** lists all purchases (bot creation + top-up packs) with timestamp and amount.
 
-<Tip>Use GPT-4o-mini for high-volume groups to reduce token consumption by up to 80% compared to GPT-4o, while maintaining good response quality.</Tip>
+<Note>**No formal invoices / tax receipts are issued at this time.** If your accounting flow requires documentation, a screenshot of the History page can serve as proof of payment, or contact support for clarification.</Note>

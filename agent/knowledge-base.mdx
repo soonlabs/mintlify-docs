@@ -17,21 +17,32 @@ When a community member asks a question, the agent:
 
 This means the agent can accurately answer questions about your project, product, or community — not just general knowledge.
 
+## Capacity Limits
+
+| Dimension | Limit |
+|-----------|-------|
+| Documents per Bot | **50** |
+| Body size per document | **50 KB** (~50,000 English characters) |
+| Title length | 256 bytes |
+
+Split larger sources into multiple documents, or remove older ones before adding new content.
+
 ## Adding Documents
 
 <Steps>
   <Step title="Navigate to Knowledge">
-    Go to the **Knowledge** page from the sidebar.
+    Open **Knowledge** from the sidebar.
   </Step>
 
   <Step title="Create a Document">
     Click **Add Document** and fill in:
-    - **Title** — A descriptive name (e.g., "FAQ", "Tokenomics", "Community Rules")
-    - **Content** — Paste or type the document text
+    - **Title** — a descriptive name (e.g. "FAQ", "Tokenomics", "Community Rules")
+    - **Summary** (optional) — a 1–2 sentence overview for internal management
+    - **Content** — paste or type the document body (Markdown or plain text)
   </Step>
 
   <Step title="Save">
-    Click **Save**. The document is indexed automatically.
+    Click **Save**. The document is semantically indexed and available to the Bot as soon as indexing completes.
   </Step>
 </Steps>
 

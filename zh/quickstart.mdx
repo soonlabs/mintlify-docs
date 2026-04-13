@@ -1,65 +1,210 @@
 ---
-title: 快速入门
-description: "5 分钟创建你的第一个 AI Agent"
+title: 新手教程
+description: "5 分钟部署你的第一个 AI 社区助手"
 ---
 
-# 快速入门
+# 新手教程
 
-五步完成 AI 社区 Agent 的部署。
+NebulaClaw 会**自动为你创建并托管 Telegram Bot**，你不需要和 BotFather 打交道。整个流程如下：
 
 <Steps>
-  <Step title="注册账号">
-    前往 [NebulaClaw 控制台](https://nonprod.nebulaclaw.ai/login)，使用 Google 账号登录。
+  <Step title="登录控制台">
+    打开 [NebulaClaw 控制台](https://app.nebulaclaw.ai/login)，使用 **Google 账号** 一键登录。首次登录会自动创建你的工作区。
   </Step>
 
-  <Step title="创建 Agent">
-    登录后点击 **创建 Agent**，输入名称并选择 AI 模型：
+  <Step title="购买 Bot 额度">
+    创建 Bot 采用**按 Bot 一次性购买**的方式，没有月费、也没有订阅层级：
 
-    - **GPT-4o** — 最佳质量，推荐大多数场景使用
-    - **GPT-4o-mini** — 更快速、更经济，适合高消息量群组
+    - **$9.9 / Bot**（一次购买，立即启用）
+    - 每个 Bot 带初始 Token 额度
+    - 用完后可随时在控制台**按需购买充值包**
+    - 充值额度**永不过期**
 
-    <Note>Agent 名称创建后不可更改。</Note>
+    <Tip>点击 **立即开始 / Get Started** 会跳转至支付页，完成后自动返回创建向导。</Tip>
   </Step>
 
-  <Step title="接入 Telegram">
-    1. 打开 Telegram，搜索 **@BotFather**
-    2. 发送 `/newbot`，按提示创建机器人
-    3. 复制机器人 Token（格式如 `123456:ABC-DEF1234ghIkl-zyx57W2v...`）
-    4. 在控制台 Agent 概览页粘贴 Token
-    5. 点击 **保存**
+  <Step title="第 1 步 · 选择 Bot 定位">
+    创建向导第 1 步，选择最接近你社群类型的预设——5 选 1：
 
-    <Tip>保存 Token 后 Agent 会自动连接 Telegram。</Tip>
-  </Step>
-
-  <Step title="配置个性">
-    进入 **个性配置** 页面，选择预设风格：
-
-    | 预设 | 风格 |
+    | 预设 | 用途 |
     |------|------|
-    | 友好 | 随和、使用表情、亲切 |
-    | 专业 | 正式、商务风格 |
-    | 创意 | 有想象力、趣味性 |
-    | 简洁 | 简短、直接 |
+    | **项目社群** | 解答产品问题、同步项目进展、引导新用户上手 |
+    | **KOL / Alpha 群** | 整理研报摘要、维护讨论质量、提高信噪比 |
+    | **交易员社群** | 辅助行情讨论、风险提示与交易纪律管理 |
+    | **Meme 社群** | 保持社群活力、氛围有趣，同时拦截骗子 |
+    | **自定义** | 编写自己的 System Prompt（适合有明确特殊诉求的社群） |
 
-    也可以选择 **自定义**，编写你自己的个性描述。
+    <Frame>
+      <img src="/images/create-bot/01-select-preset.png" alt="创建向导 · 第 1 步 选择 Bot 定位" />
+    </Frame>
+
+    每个预设预置了对应头像、Persona Prompt 和话术风格。选完后点 **下一步**。
   </Step>
 
-  <Step title="添加到群组">
-    1. 将机器人添加到 Telegram 群组
-    2. 设为 **管理员**（审核功能需要）
-    3. 发送消息测试 — AI Agent 会回复！
+  <Step title="第 2 步 · 选择 AI 模型">
+    不同模型在速度、质量、成本上各有权衡，**可以随时在 Agent 设置里更改**。
 
-    群组会自动出现在 **审核管理 > Telegram 群组** 中。
+    <Frame>
+      <img src="/images/create-bot/02-select-model.png" alt="创建向导 · 第 2 步 选择 AI 模型（经济 / 均衡 / 旗舰 三档共 7 款）" />
+    </Frame>
+
+    三档 7 款模型 · 价格单位 per 1M tokens（Input / Output 分开计价）：
+
+    | 档位 | 模型 | Input | Output | 适合 |
+    |------|------|-------|--------|------|
+    | 🟢 **经济** | `gpt-4.1-nano` | $0.10 | $0.40 | 大消息量、成本敏感 |
+    | 🟢 **经济** | `gpt-4o-mini` | $0.15 | $0.60 | 同上（更稳定） |
+    | 🔵 **均衡** ⭐ | `gpt-5-mini` | $0.25 | $2.00 | **默认推荐**——通用场景 |
+    | 🔵 **均衡** | `gpt-4.1-mini` | $0.40 | $1.60 | 通用场景 |
+    | 🟡 **旗舰** | `gpt-5.2` | $1.75 | $14.00 | 高要求问答、复杂审核 |
+    | 🟡 **旗舰** | `gpt-4o` | $2.50 | $10.00 | 高质量对话 |
+    | 🟡 **旗舰** | `gpt-4.1` | $2.00 | $8.00 | 高质量生成 |
+
+    <Tip>大群 / 客服场景 Token 消耗主要在 Input（上下文 + 知识库检索 + 历史记忆），选 **经济档** 可把成本压到旗舰档的 1/10 左右。</Tip>
+  </Step>
+
+  <Step title="第 3 步 · 命名并创建">
+    给 Bot 起一个英文标识（仅限小写字母、数字、连字符，最多 63 字符），例如 `my-project-bot`。
+
+    <Frame>
+      <img src="/images/create-bot/03-name-bot.png" alt="创建向导 · 第 3 步 命名 Bot" />
+    </Frame>
+
+    点击 **创建 Bot**，系统会自动：
+
+    1. 从 Bot Pool 分配并托管一个 Telegram Bot
+    2. 返回 `@botUsername`（Telegram 中直接可用）
+    3. 启动 Agent 网关，约 30 秒就绪
+
+    创建成功后会看到如下确认页，列出**你的 Bot 的 `@username`**、**Telegram 跳转链接**，以及后续 3 步指引：
+
+    <Frame>
+      <img src="/images/create-bot/04-bot-created.png" alt="Bot 创建成功 · 显示 @botUsername 和后续步骤" />
+    </Frame>
+
+    <Tip>点击蓝色的 `t.me/<botUsername>` 链接可直接跳到 Bot 私聊。</Tip>
+    <Warning>**Bot 头像和用户名创建后暂不支持修改。**</Warning>
+  </Step>
+
+  <Step title="把 Bot 加到你的群组">
+    1. 在 Telegram 群组 → 添加成员 → 搜索 `@botUsername` 加入
+    2. **将 Bot 提升为群管理员**（审核功能必须）
+    3. 进入控制台 **Moderation → Telegram Groups**，**添加群组 ID**
+
+    ### 获取群组 ID（@userinfobot 三步取号）
+
+    **无需把 @userinfobot 加进群**——打开它的私聊即可直接查询。
+
+    <Steps>
+      <Step title="打开 @userinfobot 并点 Menu → Group / My Group">
+        Telegram 搜索 [@userinfobot](https://t.me/userinfobot) → 点 **Start** → 点底部 **Menu**，弹出九宫格：
+
+        - **Group** = 你是管理员的所有群
+        - **My Group** = 你自己创建的群
+
+        <Frame>
+          <img src="/images/chat-id/01-menu-grid.png" alt="@userinfobot Menu 九宫格，Group / My Group 两个入口" />
+        </Frame>
+      </Step>
+      <Step title="从列表中选择目标群">
+        弹出 **Choose a Group** 页面，在列表里点中要接入的群（注意：**群组必须关闭 Topics（话题）功能**——这是 @userinfobot 的要求）。
+
+        <Frame>
+          <img src="/images/chat-id/02-choose-group.png" alt="Choose a Group 列表 — 点击目标群" />
+        </Frame>
+      </Step>
+      <Step title="复制 Chat ID 到控制台">
+        Bot 立即返回 `Id: -100xxxxxxxxx`。复制这串 ID 粘贴到控制台 **Moderation → Telegram Groups** 的输入框即可。
+
+        <Frame>
+          <img src="/images/chat-id/03-chat-id-result.png" alt="@userinfobot 返回的 Chat ID" />
+        </Frame>
+      </Step>
+    </Steps>
+
+    <Tip>同一个 Menu 也可以用来获取 **Channel / Forum** 的 ID。</Tip>
+  </Step>
+
+  <Step title="上传知识库">
+    进入 **Knowledge**，上传你希望 Agent 能回答的内容：
+
+    - 项目 / 产品 FAQ
+    - 白皮书 / 文档摘要
+    - 社区规则
+    - 常见故障排查
+
+    系统自动做语义索引——用户问"怎么提现"、"手续费多少"，即使没命中关键词也能答对。
+
+    <Tip>个性 Prompt 控"怎么说"，知识库控"说什么"。内容塞进知识库比塞进 Prompt 更有效。</Tip>
+  </Step>
+
+  <Step title="配置审核规则">
+    进入 **Moderation → Rules**，点击 **Add Rule**。每条规则包含：
+
+    - **描述**（自然语言）——直接用一句话说明触发场景
+    - **动作**：`mute`（可设时长或永久） / `kick`（可重新加入） / `ban`（永久移出）
+
+    **推荐的基线规则**（复制即用）：
+
+    | 触发场景 | 动作 |
+    |---------|------|
+    | 辱骂、侮辱、人身攻击、持续挑衅、恶意诋毁（包括针对项目方、团队、社区成员） | `kick` |
+    | 诈骗、钓鱼信息 | `kick` |
+    | 索要或泄露私钥、助记词 | `ban` |
+    | 刷屏、广告 | `mute 24h` |
+    | 恶意链接 | `mute 1h` |
+    | 假空投、返利拉人头 | `mute 24h` |
+
+    AI 结合上下文判断，不需要维护关键词黑名单。所有处理动作记录在 **Audit 日志** 可回查。
+  </Step>
+
+  <Step title="查看实时数据">
+    **Analytics → Dashboard**：
+
+    - 今日 / 本周消息量
+    - 活跃用户数
+    - 情绪趋势
+    - 审核动作统计
+
+    **Billing → Usage** 可查看当月 Token 消耗和剩余额度。
   </Step>
 </Steps>
+
+## 常见问题
+
+<AccordionGroup>
+  <Accordion title="为什么 Bot 不回复消息？">
+    检查两点：① Bot 已设为群管理员；② 群组 ID 已在 **Moderation → Telegram Groups** 添加。两者缺一，Agent 不会响应该群。
+  </Accordion>
+  <Accordion title="审核误杀了正常用户怎么办？">
+    去 **Moderation → Rules** 把规则描述写得更具体。例如把"推广外链"细化为"非官方白名单域名的邀请链接"。AI 会跟着你的描述调整判断尺度。
+  </Accordion>
+  <Accordion title="怎么让 Agent 回答更准？">
+    先扩充知识库，再调 Persona。内容进知识库比塞到 Persona Prompt 里更有效。
+  </Accordion>
+  <Accordion title="Token 额度用完了会怎样？">
+    Bot 会暂停响应。在控制台 **Billing** 购买任意充值包即可立刻恢复——**充值额度永不过期**。
+  </Accordion>
+  <Accordion title="可以创建多个 Bot 吗？">
+    目前每个账号 **1 个 Bot**。不过单个 Bot 可以**同时服务多个 Telegram 群组**——把同一个 `@botUsername` 加到每个群并设为管理员，然后在 **Moderation → Telegram Groups** 分别登记 Chat ID 即可。
+
+    **多 Bot（单账号创建多个独立 Bot）** 功能规划中，上线后会在本页和官方频道同步公告。
+  </Accordion>
+</AccordionGroup>
 
 ## 下一步
 
 <CardGroup cols={2}>
-  <Card title="审核规则" icon="shield" href="/zh/moderation/rules">
-    为社区设置智能审核
+  <Card title="审核规则最佳实践" icon="shield" href="/zh/moderation/rules">
+    写出精准的自然语言审核策略
   </Card>
   <Card title="知识库" icon="brain" href="/zh/agent/knowledge-base">
-    上传文档让 Agent 能回答问题
+    让 Agent 答得更准
+  </Card>
+  <Card title="数据分析" icon="chart-line" href="/zh/analytics/dashboard">
+    读懂社区健康度指标
+  </Card>
+  <Card title="Telegram 接入" icon="paper-plane" href="/zh/channels/telegram">
+    群组管理 + 多语言配置
   </Card>
 </CardGroup>

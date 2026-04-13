@@ -1,48 +1,111 @@
 ---
-title: 简介
-description: "AI 驱动的社区自动化管理平台"
+title: 什么是 NebulaClaw
+description: "AI 驱动的社区自动化平台"
 ---
 
-# 欢迎使用 NebulaClaw
+# 什么是 NebulaClaw
 
-NebulaClaw 是一个 AI 驱动的社区自动化平台，用智能 Agent 替代传统的机器人命令。几分钟内即可在 Telegram 群组中部署 AI Agent，无需编写代码。
+**NebulaClaw 是一个 AI 驱动的社区自动化平台。** 它用一个理解自然语言、具备上下文感知能力的 AI Agent，替代传统群机器人依赖 `/命令` 和关键词正则的管理方式。
+
+社区运营的三件核心事务——**回答问题、审核发言、运营洞察**——都交给 Agent 自动完成。配置只需自然语言描述，5 分钟即可部署上线。
 
 <CardGroup cols={2}>
-  <Card title="快速入门" icon="rocket" href="/zh/quickstart">
-    5 分钟创建你的第一个 AI Agent
+  <Card title="新手教程" icon="rocket" href="/zh/quickstart">
+    5 分钟部署你的第一个 AI 社区助手
   </Card>
   <Card title="核心概念" icon="book" href="/zh/concepts">
     了解 NebulaClaw 的工作原理
   </Card>
-  <Card title="接入 Telegram" icon="paper-plane" href="/zh/channels/telegram">
-    设置 Telegram 机器人集成
-  </Card>
-  <Card title="API 参考" icon="code" href="/api-reference/overview">
-    集成 NebulaClaw API
-  </Card>
 </CardGroup>
 
-## NebulaClaw 能做什么
+## 核心模块
 
 <CardGroup cols={2}>
-  <Card title="AI Agent" icon="robot">
-    部署理解自然语言的智能 Agent，根据上下文回复社区成员。
+  <Card title="AI Agent" icon="bot">
+    每个 Bot 独享 7×24 在线 Agent，经济 / 均衡 / 旗舰三档模型可切换。
+  </Card>
+  <Card title="社群定位预设" icon="sparkles">
+    项目社群 / KOL·Alpha / 交易员 / Meme 四种预设 + 完全自定义。
+  </Card>
+  <Card title="知识库问答" icon="brain">
+    上传 FAQ、白皮书、文档，Agent 基于语义检索回答。
   </Card>
   <Card title="智能审核" icon="shield-check">
-    用自然语言定义审核规则，AI 自动识别并执行——禁言、踢出或封禁。
+    自然语言写规则，AI 执行 mute / kick / ban，免维护词库。
   </Card>
-  <Card title="知识库" icon="brain">
-    上传文档，让 Agent 能回答关于你的项目、产品或社区规则的问题。
+  <Card title="多群组管理" icon="users">
+    单个 Bot 服务多个 Telegram 群组，日志与数据分别统计。
   </Card>
-  <Card title="数据分析" icon="chart-line">
-    实时追踪消息量、活跃用户、情绪趋势和审核操作。
+  <Card title="实时数据" icon="chart-line">
+    消息量、活跃用户、情绪趋势、审核动作量化输出。
   </Card>
 </CardGroup>
 
-## 支持的平台
+## 技术特征
 
-| 平台 | 状态 |
+- **自动部署 Bot**——付费后系统自动创建并托管 Telegram Bot，用户无需与 BotFather 交互，创建完成即可直接拉群使用。
+- **语义审核引擎**——规则用自然语言描述（例如"用户发布推广外链"），AI 结合上下文判断，显著低于关键词匹配的误杀率。
+- **多语言自动识别**——自动检测用户消息语种并用对应语言回复；支持回退语言配置（英、中、韩、土、印尼、俄、越）。
+- **一次付费，永久额度**——**$9.9 / Bot 一次购买**，没有月费、没有订阅层级；按需购买充值包，充值额度**永不过期**。
+
+## 支持的渠道
+
+| 渠道 | 状态 |
 |------|------|
-| Telegram | 已上线 |
-| Discord  | 即将推出 |
-| Slack    | 即将推出 |
+| Telegram | ✅ 已上线 |
+| Discord  | 🔜 规划中 |
+| Slack    | 🔜 规划中 |
+
+## 解决的企业痛点
+
+从项目方 / 运营团队角度，NebulaClaw 针对以下六个维度的常见痛点：
+
+<CardGroup cols={2}>
+  <Card title="1. 人力成本" icon="user-minus">
+    **痛点**：7×24 社区值守需要 3 班倒的社区经理，Web3 / 跨境项目的多语言覆盖又会乘上倍数；节假日、深夜恰恰是诈骗链接最活跃的时段。
+
+    **解决**：一个 Agent 替代值守层——自动回答、自动审核、永不下线；团队只需关注 Agent 拦不住的真正高价值对话。
+  </Card>
+  <Card title="2. 响应时效" icon="timer">
+    **痛点**：一条空投钓鱼 / 假返利的消息，在大群里 30 秒内就能完成诱骗；人工 Mod 的平均响应窗口在分钟级，等到介入时损失已经发生。
+
+    **解决**：Agent 实时识别并处置，从消息发出到 mute / kick / ban 在**秒级**完成，不给钓鱼消息扩散窗口。
+  </Card>
+  <Card title="3. 规则可维护性" icon="wrench">
+    **痛点**：关键词 / 正则词库需要持续更新，黑产每换一批域名、一套话术就得补规则；漏过了误杀了都是信任损失。
+
+    **解决**：用**自然语言**描述意图（例如"非白名单邀请链接"、"假空投返利话术"），AI 结合上下文判断，词库不再需要维护，描述写得越清晰执行越精准。
+  </Card>
+  <Card title="4. 跨语言覆盖" icon="languages">
+    **痛点**：Web3 / 跨境社区自然同时出现英、中、韩、土、印、俄、越等语种，按语言分群成本高，合并管理又会出现"看不懂导致误判"。
+
+    **解决**：**自动识别 7 种语言**，Agent 按用户语言回复，审核规则同样跨语言生效；不需要分群、不需要分别训练词库。
+  </Card>
+  <Card title="5. 合规与审计" icon="scroll-text">
+    **痛点**：人工 Mod 标准不统一，同类违规不同处置，后续申诉 / 维权时缺乏证据链；DAO / 上市公司级的社区尤其敏感。
+
+    **解决**：所有处置动作进入 **Audit 日志**，包含触发规则、上下文、动作类型和时间戳；规则统一、处置可回查，满足内审与合规诉求。
+  </Card>
+  <Card title="6. 运营洞察" icon="chart-column">
+    **痛点**：传统 Bot 只做动作不留数据，管理层看不到社区健康度，KOL 合作、活动复盘全凭感觉。
+
+    **解决**：内置**数据看板**——消息量、活跃用户、情绪趋势、审核动作量化输出，把社区从"黑箱氛围"变成可衡量资产。
+  </Card>
+</CardGroup>
+
+<Card title="加分项 · 部署与扩展" icon="rocket">
+  **痛点**：传统方案往往需要开发 + 运维介入，上线周期从数天到数周。
+
+  **解决**：无代码部署，Bot 由平台自动托管，**上线时间 ≈ 5 分钟**；**单个 Bot 可同时管理多个 Telegram 群组**（多 Bot 功能规划中）。
+</Card>
+
+## 适用场景
+
+- **Web3 项目社区**——白皮书答疑、反 shill、反诈骗链接过滤
+- **KOL / Alpha 付费群**——内容氛围维护 + 噪音过滤
+- **交易员社群**——市场讨论、合规提示（不提供投资建议）
+- **Meme / Degen 社群**——高能量氛围 + 严格的安全把关（诈骗链接、假空投）
+
+<Card title="准备好了？" icon="rocket" href="/zh/quickstart">
+  跟着新手教程，5 分钟上线你的 AI 社区助手。
+</Card>
