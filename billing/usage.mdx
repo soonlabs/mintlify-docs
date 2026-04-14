@@ -5,14 +5,22 @@ description: "Track AI token consumption and top up credits"
 
 # Usage & Tokens
 
-Every AI response consumes tokens based on input (user message + context) and output (agent response) length. Monitor your balance on the **Billing** page.
+Your Bot has **three core behaviors** that consume tokens:
+
+| Behavior | Trigger | Model used |
+|----------|---------|------------|
+| **AI replies** | User sends a message / @-mentions the Bot | Your chosen model (Economy / Balanced / Premium) |
+| **Rule enforcement** | Every group message is scanned against moderation rules | Built-in `gpt-4o-mini` (fixed) |
+| **Sentiment analysis** | Every group message is scored for sentiment | Built-in `gpt-4o-mini` (fixed) |
+
+<Tip>Rule enforcement and sentiment analysis run on the low-cost `gpt-4o-mini` regardless of your model tier — **they're not affected by your model choice**. The bulk of token spend comes from **AI replies**.</Tip>
 
 ## Understanding Tokens
 
 - **1 token** ≈ 4 English characters or 0.75 words
 - A typical conversational exchange uses 500–2,000 tokens
 - Knowledge base lookups add context tokens per request
-- Longer persona descriptions increase per-request consumption
+- Longer persona prompts increase per-request baseline cost
 
 ## Usage Dashboard
 
