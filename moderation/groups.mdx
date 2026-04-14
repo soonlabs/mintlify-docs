@@ -50,8 +50,8 @@ Groups must be **registered manually** — simply adding the Bot to a Telegram g
 
 | Option | Behavior |
 |--------|----------|
-| **Follow user** (default) | Bot auto-detects each message's language and replies in kind |
-| A specific language (EN / ZH / KO / TR / ID / RU / VI) | Bot always replies in that language, ignoring the user's language |
+| **Follow user** (default) | Bot auto-detects the user's language; when detection fails, infers from context |
+| A specific language (EN / ZH / KO / TR / ID / RU / VI) | Bot still detects user language when possible; **only falls back** to this language when detection fails (e.g. emoji-only, images) |
 
 <Warning>Group settings can only be modified when the agent is online. If the agent is offline, settings are read-only.</Warning>
 

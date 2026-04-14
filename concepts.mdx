@@ -75,7 +75,7 @@ The messaging platforms your Bot connects to:
 Each Bot can serve multiple Telegram groups. Groups must be **added manually** by Chat ID (`-100...`) in **Moderation → Telegram Groups**. Per-group settings:
 
 - **Require Mention**: when on, the Bot only replies when @-mentioned; off means it watches all messages.
-- **Fallback Language** (Bot reply language): default **Follow user** — the Bot auto-detects the user's language and replies in kind. Or set a fixed language (EN / ZH / KO / TR / ID / RU / VI) and the Bot will always reply in that language.
+- **Fallback Language**: the Bot auto-detects the user's language and replies in kind. **When it can't determine the language** (e.g. the message is only emojis, images, or mixed-language), it falls back to this setting. Default is "**Follow user**" (auto); can also be set to a specific language (EN / ZH / KO / TR / ID / RU / VI).
 
 ## Token Credits
 

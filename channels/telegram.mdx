@@ -58,20 +58,20 @@ Each group in **Moderation → Telegram Groups** can be configured individually:
 
 > For smaller boutique groups, turn Require Mention off for a more active presence. For high-volume groups, keep it on to conserve tokens.
 
-### Fallback Language (Bot reply language)
+### Fallback Language
 
-Controls what language the Bot replies in for this group:
+The Bot auto-detects the user's language and replies in kind. **When it can't determine the language** (e.g. the message is only emojis, images, links, or mixed-language), it falls back to this setting.
 
-- **Follow user** (default, `auto`) — the Bot auto-detects each message's language and replies in kind
-- A specific language — the Bot always replies in that language regardless of the user's language:
+- **Follow user** (default, `auto`) — still attempts to infer from context when detection fails
+- A specific language — used as fallback when language can't be detected:
 
   > English, Simplified Chinese, Korean, Turkish, Indonesian, Russian, Vietnamese
 
 **Examples**:
 
-- A Chinese project's Chinese-speaking group → set **Simplified Chinese** so the Bot doesn't switch to English on the occasional English message
-- A cross-border multilingual community → keep **Follow user**, the Bot matches each member's language
-- An official English-facing group → set **English** for a consistent tone
+- A Chinese project's group → set **Simplified Chinese** so emoji-only messages get Chinese replies
+- A cross-border community → keep **Follow user**
+- An English-facing group → set **English** as the fallback
 
 <Note>Per-group settings can only be modified while the Bot is online.</Note>
 
@@ -85,7 +85,7 @@ Controls what language the Bot replies in for this group:
     The Bot must be a **group admin** to enforce moderation. Promote it from member to Admin.
   </Accordion>
   <Accordion title="Bot replies in the wrong language">
-    In **Moderation → Telegram Groups**, change the group's **Fallback Language** to the language you want. Or leave it as **Follow user** (default) to have the Bot auto-switch per user.
+    In **Moderation → Telegram Groups**, set the group's **Fallback Language** to the language you prefer (e.g. English for an EN group). The Bot still replies in the user's detected language when possible — fallback only kicks in when detection fails.
   </Accordion>
   <Accordion title="Can one Bot manage multiple groups?">
     Yes. Add the same Bot to multiple groups; each group is configured independently in **Moderation → Telegram Groups**.
