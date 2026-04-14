@@ -12,15 +12,14 @@ NebulaClaw 会**自动为你创建并托管 Telegram Bot**，你不需要和 Bot
     打开 [NebulaClaw 控制台](https://app.nebulaclaw.ai/login)，使用 **Google 账号** 一键登录。首次登录会自动创建你的工作区。
   </Step>
 
-  <Step title="购买 Bot 额度">
-    创建 Bot 采用**按 Bot 一次性购买**的方式，没有月费、也没有订阅层级：
+  <Step title="开通月度订阅">
+    创建 Bot 需要先订阅：
 
-    - **$9.9 / Bot**（一次购买，立即启用）
-    - 每个 Bot 带初始 Token 额度
-    - 用完后可随时在控制台**按需购买充值包**
-    - 充值额度**永不过期**
+    - **$9.99 / 月**（按月自动续费，随时取消）
+    - 每月自带 **$5.00 Token 额度**（月底未用完**自动清零**）
+    - 额度用完可随时在 Billing **购买充值包**，充值额度**永不过期**
 
-    <Tip>点击 **立即开始 / Get Started** 会跳转至支付页，完成后自动返回创建向导。</Tip>
+    <Tip>点击 **立即开始 / Get Started** 跳转 Stripe 支付页，完成后自动返回创建向导。</Tip>
   </Step>
 
   <Step title="第 1 步 · 选择 Bot 定位">
@@ -183,7 +182,7 @@ NebulaClaw 会**自动为你创建并托管 Telegram Bot**，你不需要和 Bot
     先扩充知识库，再调 Persona。内容进知识库比塞到 Persona Prompt 里更有效。
   </Accordion>
   <Accordion title="Token 额度用完了会怎样？">
-    Bot 会暂停响应。在控制台 **Billing** 购买任意充值包即可立刻恢复——**充值额度永不过期**。
+    月度 $5 额度用完后，如果有充值包余额会自动切换，Bot 不中断；如果都用完了 Bot 会暂停响应。购买充值包即可立刻恢复——**充值额度永不过期**。月度额度会在下月 1 号自动补充 $5（未用完部分**不累积**）。
   </Accordion>
   <Accordion title="可以创建多个 Bot 吗？">
     目前每个账号 **1 个 Bot**。不过单个 Bot 可以**同时服务多个 Telegram 群组**——把同一个 `@botUsername` 加到每个群并设为管理员，然后在 **Moderation → Telegram Groups** 分别登记 Chat ID 即可。
