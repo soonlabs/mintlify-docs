@@ -191,6 +191,10 @@ article h6 a {
   padding-left: 0;
   counter-reset: step;
   margin-top: 1.5rem;
+  /* Kill Fumadocs' native outer left-border — we draw our own connector
+     line through the badge centers instead. */
+  border-left: none !important;
+  margin-left: 0 !important;
 }
 
 .fd-steps .fd-step {
@@ -222,11 +226,12 @@ article h6 a {
   z-index: 1;
 }
 
+/* Connector line through badge centers */
 .fd-steps .fd-step:not(:last-child)::after {
   content: '';
   position: absolute;
-  left: 0.8rem;
-  top: 1.95rem;
+  left: calc(0.825rem - 0.5px);
+  top: 1.9rem;
   bottom: 0;
   width: 1px;
   background: color-mix(in oklab, var(--nc-primary) 30%, transparent);
