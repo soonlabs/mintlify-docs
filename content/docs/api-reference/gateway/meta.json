@@ -1,0 +1,10 @@
+{
+  "title": "Gateway",
+  "pages": [
+    "create-gateway",
+    "list-gateways",
+    "get-gateway",
+    "update-gateway",
+    "delete-gateway"
+  ]
+}

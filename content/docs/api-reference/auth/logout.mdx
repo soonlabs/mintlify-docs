@@ -1,0 +1,16 @@
+---
+title: "Logout"
+api: "POST /api/v1/auth/logout"
+description: "Invalidate the current session"
+---
+## Description
+Invalidates the current authentication session on the server side. After calling this endpoint, the Bearer token and session cookie are no longer valid.
+## Response
+```json
+{
+  "code": 0,
+  "message": "OK",
+  "data": null
+}
+```
+<Note>Client applications should also clear any locally stored tokens and session data after calling this endpoint.</Note>

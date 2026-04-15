@@ -1,0 +1,28 @@
+---
+title: "Google Login"
+api: "POST /api/v1/auth/google/login"
+description: "Initiate the Google OAuth login flow"
+---
+## Request Body
+<ParamField body="redirectUrl" type="string" required>
+  The URL to redirect to after successful authentication. Must be a whitelisted domain.
+</ParamField>
+## Response
+<ResponseField name="url" type="string">
+  The Google OAuth consent URL. Redirect the user to this URL to begin authentication.
+</ResponseField>
+```json
+{
+  "code": 0,
+  "message": "OK",
+  "data": {
+    "url": "https://accounts.google.com/o/oauth2/v2/auth?..."
+  }
+}
+```
+## Flow
+1. Call this endpoint with your desired redirect URL
+2. Redirect the user to the returned `url`
+3. User authenticates with Google
+4. Google redirects back to your app with a token in the URL hash (`#token=...`)
+5. Extract the token and use it for subsequent API calls

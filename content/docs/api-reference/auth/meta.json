@@ -1,0 +1,4 @@
+{
+  "title": "Auth",
+  "pages": ["google-login", "user-info", "logout"]
+}

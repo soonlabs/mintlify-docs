@@ -1,0 +1,37 @@
+---
+title: "List Gateways"
+api: "GET /api/v1/gateway"
+description: "List all gateways (agents) for the authenticated user"
+---
+## Response
+<ResponseField name="items" type="array">
+  Array of gateway objects.
+  <Expandable title="Gateway fields">
+    <ResponseField name="name" type="string">Gateway name</ResponseField>
+    <ResponseField name="slotId" type="string">Slot identifier</ResponseField>
+    <ResponseField name="status" type="object">
+      <Expandable title="Status fields">
+        <ResponseField name="ready" type="boolean">Whether the gateway is online</ResponseField>
+        <ResponseField name="suspended" type="boolean">Whether the gateway is suspended</ResponseField>
+      </Expandable>
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+```json
+{
+  "code": 0,
+  "message": "OK",
+  "data": {
+    "items": [
+      {
+        "name": "my-agent",
+        "slotId": "slot-abc123",
+        "status": {
+          "ready": true,
+          "suspended": false
+        }
+      }
+    ]
+  }
+}
+```

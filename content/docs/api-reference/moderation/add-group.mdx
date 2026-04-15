@@ -1,0 +1,30 @@
+---
+title: "Add Group"
+api: "POST /api/v1/gateway/{name}/groups"
+description: "Add a Telegram group to a gateway"
+---
+## Path Parameters
+<ParamField path="name" type="string" required>Gateway name.</ParamField>
+## Request Body
+<ParamField body="chatId" type="string" required>
+  Telegram Chat ID (e.g., `-1001234567890`).
+</ParamField>
+<ParamField body="fallbackLanguage" type="string">
+  Fallback language code. Options: `en`, `zh-CN`, `ko`, `tr`, `id`, `ru`, `vi`. Pass `null` for auto-detect.
+</ParamField>
+## Response
+Returns the created group object.
+```json
+{
+  "code": 0,
+  "message": "OK",
+  "data": {
+    "id": 1,
+    "chatId": "-1001234567890",
+    "title": "My Community",
+    "requireMention": false,
+    "fallbackLanguage": null
+  }
+}
+```
+<Note>The gateway must be online to add groups.</Note>

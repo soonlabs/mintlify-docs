@@ -1,0 +1,13 @@
+{
+  "title": "Moderation",
+  "pages": [
+    "list-rules",
+    "create-rule",
+    "update-rule",
+    "delete-rule",
+    "list-groups",
+    "add-group",
+    "update-group",
+    "delete-group"
+  ]
+}

@@ -1,0 +1,36 @@
+---
+title: Authentication
+description: "How to authenticate with the NebulaClaw API"
+---
+
+The NebulaClaw API supports two authentication methods.
+
+## Bearer Token
+
+Include the token in the `Authorization` header:
+
+```bash
+curl -H "Authorization: Bearer YOUR_TOKEN" \
+  https://api.nebulaclaw.ai/api/v1/gateway
+```
+
+Tokens are obtained through the [Google OAuth login flow](/docs/api-reference/auth/google-login). After successful authentication, the backend returns a JWT token.
+
+## Cookie-Based Auth
+
+For browser-based applications, the API also supports cookie-based authentication. Include credentials in your fetch requests:
+
+```javascript
+fetch("https://api.nebulaclaw.ai/api/v1/gateway", {
+  credentials: "include",
+});
+```
+
+## Token Lifecycle
+
+- Tokens are issued after successful Google OAuth authentication
+- Tokens expire after a set period (check the JWT `exp` claim)
+- When a token expires, the API returns `401 Unauthorized`
+- Re-authenticate via the OAuth flow to obtain a new token
+
+<Warning>Never expose tokens in client-side code, URLs, or public repositories.</Warning>
