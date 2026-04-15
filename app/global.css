@@ -434,3 +434,52 @@ aside button[data-theme-toggle]:hover {
   color: var(--color-fd-foreground);
   border: none;
 }
+
+/* ---------- Page bottom: prev/next pagination ---------- */
+
+/* Article wrapper — more breathing room at bottom */
+article[class*='max-w-'] {
+  padding-bottom: 4rem !important;
+  gap: 1.25rem !important;
+}
+
+/* Fumadocs renders the prev/next as a 2-col grid at the article end.
+   Give it more top margin, larger inter-card gap, and beefier padding
+   + hover affordance on each card. */
+article > .grid.grid-cols-2:last-child {
+  margin-top: 2.75rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--color-fd-border);
+  gap: 0.85rem !important;
+}
+
+article > .grid.grid-cols-2:last-child > a {
+  padding: 1.1rem 1.25rem !important;
+  border-radius: 0.75rem !important;
+  min-height: 4.5rem;
+  justify-content: center;
+  transition: border-color 180ms ease, background 180ms ease, transform 180ms ease;
+}
+
+article > .grid.grid-cols-2:last-child > a:hover {
+  border-color: var(--nc-primary-border);
+  transform: translateY(-1px);
+}
+
+/* Direction label ("← prev" / "next →") */
+article > .grid.grid-cols-2:last-child > a > .inline-flex {
+  color: var(--color-fd-muted-foreground);
+  font-size: 0.78rem;
+  font-weight: 550;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+/* Page title under direction label */
+article > .grid.grid-cols-2:last-child > a > .text-fd-muted-foreground,
+article > .grid.grid-cols-2:last-child > a > p {
+  color: var(--color-fd-foreground) !important;
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: -0.005em;
+}
