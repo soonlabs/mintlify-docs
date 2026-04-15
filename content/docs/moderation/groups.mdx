@@ -1,0 +1,58 @@
+---
+title: Group Management
+description: "Manage Telegram groups connected to your agent"
+---
+
+The Telegram Groups table shows all groups your agent is connected to, with per-group configuration options.
+
+## Group Table
+
+Each group displays:
+
+| Column | Description |
+|--------|-------------|
+| **Group** | Group name (from Telegram) |
+| **Chat ID** | Telegram chat identifier |
+| **Require @** | Whether the bot requires an @mention to respond |
+| **Fallback Lang** | Language used when user language can't be detected |
+| **Actions** | Delete button to remove the group |
+
+## Adding a Group
+
+Groups must be **registered manually** — simply adding the Bot to a Telegram group does **not** make it appear here. The Bot only responds in groups whose Chat ID is registered in the console.
+
+<Steps>
+  <Step title="Add the Bot to the Telegram group and promote it to admin">
+    The Bot must be a group admin to enforce moderation (mute / kick / ban).
+  </Step>
+  <Step title="Get the Chat ID">
+    Open a private chat with [@userinfobot](https://t.me/userinfobot), tap **Menu → Group** (or **My Group**), and pick the target group from the list — the Chat ID (starts with `-100`) is returned instantly. **No need to add @userinfobot to the group.**
+  </Step>
+  <Step title="Register in the console">
+    In **Moderation → Telegram Groups**, paste the Chat ID, pick a fallback language, and click **Add Group**.
+  </Step>
+</Steps>
+
+<Warning>Only groups that contain *your* Bot can be registered. Registering a Chat ID where your Bot isn't present will have no effect.</Warning>
+
+## Group Settings
+
+### Require @ Mention
+
+| Setting | Behavior |
+|---------|----------|
+| **On** | Bot only responds when mentioned (e.g., `@yourbot help`) |
+| **Off** | Bot monitors all messages and may respond proactively |
+
+### Fallback Language (Bot reply language)
+
+| Option | Behavior |
+|--------|----------|
+| **Follow user** (default) | Bot auto-detects the user's language; when detection fails, infers from context |
+| A specific language (EN / ZH / KO / TR / ID / RU / VI) | Bot still detects user language when possible; **only falls back** to this language when detection fails (e.g. emoji-only, images) |
+
+<Warning>Group settings can only be modified when the agent is online. If the agent is offline, settings are read-only.</Warning>
+
+## Removing a Group
+
+Click the trash icon next to a group to disconnect it. The bot will stop responding in that group but remains a member — you'll need to remove it from the Telegram group separately.

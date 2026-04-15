@@ -1,0 +1,14 @@
+{
+  "title": "NebulaClaw",
+  "pages": [
+    "---Getting Started---",
+    "index",
+    "quickstart",
+    "concepts",
+    "agent",
+    "channels",
+    "moderation",
+    "analytics",
+    "billing"
+  ]
+}

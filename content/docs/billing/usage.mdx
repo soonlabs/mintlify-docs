@@ -1,0 +1,50 @@
+---
+title: Usage & Tokens
+description: "Track AI token consumption and top up credits"
+---
+
+Your Bot has **three core behaviors** that consume tokens:
+
+| Behavior | Trigger | Model used |
+|----------|---------|------------|
+| **AI replies** | User sends a message / @-mentions the Bot | Your chosen model (Economy / Balanced / Premium) |
+| **Rule enforcement** | Every group message is scanned against moderation rules | Built-in `gpt-4o-mini` (fixed) |
+| **Sentiment analysis** | Every group message is scored for sentiment | Built-in `gpt-4o-mini` (fixed) |
+
+<Tip>Rule enforcement and sentiment analysis run on the low-cost `gpt-4o-mini` regardless of your model tier — **they're not affected by your model choice**. The bulk of token spend comes from **AI replies**.</Tip>
+
+## Understanding Tokens
+
+- **1 token** ≈ 4 English characters or 0.75 words
+- A typical conversational exchange uses 500–2,000 tokens
+- Knowledge base lookups add context tokens per request
+- Longer persona prompts increase per-request baseline cost
+
+## Usage Dashboard
+
+The **Billing** page shows:
+
+| Metric | Description |
+|--------|-------------|
+| **Tokens Used** | Total tokens consumed (priced in USD) |
+| **Remaining Credits** | Monthly credit balance + top-up balance |
+| **Usage Trend** | Daily token consumption chart |
+| **Top-up Packs** | Available credit packs to purchase |
+
+## When Credits Run Out
+
+The bot pauses responding. Buy any **top-up pack** from the Billing page — your bot resumes immediately after checkout.
+
+<Warning>**Top-up credits never expire** — buy once, use whenever. No reset clocks to worry about.</Warning>
+
+## Reducing Token Consumption
+
+- High-volume groups should pick the **Economy tier** (`gpt-4.1-nano` / `gpt-4o-mini`) — up to **90%** cheaper than Premium while still producing solid responses
+- Put FAQs in the **knowledge base** rather than bloating the persona prompt — the knowledge base is retrieved on demand; the prompt ships with every request
+- Write specific, concrete moderation rule descriptions to reduce inference overhead
+
+## Billing History
+
+**Billing → History** lists all purchases (bot creation + top-up packs) with timestamp and amount.
+
+<Note>**No formal invoices / tax receipts are issued at this time.** If your accounting flow requires documentation, a screenshot of the History page can serve as proof of payment, or contact support for clarification.</Note>

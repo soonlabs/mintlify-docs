@@ -1,0 +1,83 @@
+---
+title: Pricing
+description: "9.99 USD/month subscription with 5 USD monthly token credits"
+---
+
+NebulaClaw uses a **monthly subscription** model — simple and transparent.
+
+## Core Pricing
+
+<Card title="$9.99 / month" icon="bot">
+  **Monthly subscription, cancel anytime.**
+
+  - 1 always-on 24/7 AI Bot
+  - **$5.00 monthly token credits** (unused credits **reset to zero** at the end of each billing cycle)
+  - Full feature access: Knowledge Q&A, smart moderation, analytics
+  - All 7 AI models available (Economy / Balanced / Premium tiers)
+  - Multi-group management, auto language detection
+</Card>
+
+## Token Credit Mechanics
+
+AI inference is metered in tokens:
+
+| Credit type | Source | Expiry |
+|-------------|--------|--------|
+| **Monthly credits** | $5.00 included with subscription | **Resets monthly** — unused balance does not carry over |
+| **Top-up credits** | Buy packs from Billing console | **Never expire** — balance stays until consumed |
+
+- Monthly credits are consumed first; once depleted, the bot automatically draws from top-up balance
+- Top-up packs are priced by size — larger packs have better per-unit rates
+
+<Tip>High-volume groups should keep a top-up pack on standby. When the monthly $5 runs out, the bot switches to top-up credits seamlessly — no interruption.</Tip>
+
+## How Many Groups Can One Bot Serve?
+
+Each account currently has **1 Bot**, but that **one Bot can serve multiple Telegram groups**:
+
+- Add the same `@botUsername` to each group and promote it to admin
+- Register each group's Chat ID in **Moderation → Telegram Groups**
+- Per-group **Require Mention** and **Fallback Language** settings
+- Moderation rules and knowledge base are Bot-level — configure once, apply everywhere
+
+<Info>**Multi-Bot** (multiple independent Bots per account) is on the roadmap — useful for running distinct Bots per project / per community preset. In the meantime, a single Bot with multi-group management covers most use cases.</Info>
+
+## Checkout Flow
+
+<Steps>
+  <Step title="Go to Pricing">
+    Visit the [pricing page](https://app.nebulaclaw.ai/pricing) and click **Get Started**.
+  </Step>
+  <Step title="Complete Payment">
+    Pay securely via Stripe. Major credit and debit cards accepted. Subscription renews monthly.
+  </Step>
+  <Step title="Back to Console">
+    You're automatically redirected to the creation wizard to configure your new bot.
+  </Step>
+</Steps>
+
+## FAQ
+
+<AccordionGroup>
+  <Accordion title="What payment methods are supported?">
+    Payment is processed via Stripe — all major credit and debit cards accepted.
+  </Accordion>
+  <Accordion title="Can I get a refund?">
+    **No refunds.** All subscription payments and top-up packs are final — please confirm your needs before subscribing.
+  </Accordion>
+  <Accordion title="Do you provide invoices?">
+    **No formal invoices / tax receipts are issued at this time.** Payment history is visible under **Billing → History**.
+  </Accordion>
+  <Accordion title="What happens to unused monthly credits?">
+    **They reset to zero at the end of each billing cycle** — monthly credits do not carry over. Top-up credits are unaffected.
+  </Accordion>
+  <Accordion title="What happens if I cancel?">
+    You keep access until the end of the current billing period. After that the bot stops responding until you resubscribe. Top-up credits **are not lost** on cancellation.
+  </Accordion>
+  <Accordion title="How many groups can one Bot serve?">
+    No hard limit — the same `@botUsername` can be added to multiple groups. Register each Chat ID in **Moderation → Telegram Groups**.
+  </Accordion>
+  <Accordion title="Can I create multiple independent Bots?">
+    Each account currently has **1 Bot**. Multi-Bot support is on the roadmap.
+  </Accordion>
+</AccordionGroup>

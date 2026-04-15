@@ -1,0 +1,76 @@
+---
+title: 创建 Bot
+description: "部署你的第一个 AI 社区 Bot"
+---
+
+创建 Bot 采用**向导式流程**，共 4 步：订阅 → 定位 → 模型 → 命名。整个过程约 1 分钟。
+
+<Steps>
+  <Step title="登录并进入创建向导">
+    前往 [app.nebulaclaw.ai](https://app.nebulaclaw.ai)，使用 Google 账号登录。如果还没有 Bot，登录后会自动跳转到创建页面；也可以在左侧导航 **Bots → Create** 手动进入。
+  </Step>
+
+  <Step title="订阅（$9.99 / 月）">
+    创建 Bot 需要先开通月度订阅：
+
+    - **$9.99 / 月**（按月自动续费，随时取消）
+    - 每月自带 **$5.00 Token 额度**（每个计费周期结束时清零）
+    - 完整功能（知识库 / 审核 / 数据分析 / 7 款模型）
+
+    点击 **立即开始** 通过 Stripe 完成支付，页面自动返回创建向导。
+  </Step>
+
+  <Step title="选择社群定位">
+    从四个预设中选一个最接近你社群类型的：
+
+    - **项目社群**——Web3 项目方 / 产品社区
+    - **KOL / Alpha 群**——付费 Alpha / 研究群
+    - **交易员社群**——交易讨论群
+    - **Meme 社群**——Degen / Meme 币群
+
+    每个预设预置了对应头像和经调优的 Persona Prompt，创建后仍可进入 [人设页](/docs/agent/personality) 切换或自定义。
+  </Step>
+
+  <Step title="选择 AI 模型档位">
+    三档七款模型：
+
+    | 档位 | 示例模型 | 适合 |
+    |------|---------|------|
+    | **Economy** | `gpt-4.1-nano`、`gpt-4o-mini` | 大消息量、成本敏感 |
+    | **Balanced**（默认） | `gpt-5-mini`、`gpt-4.1-mini` | 通用场景 |
+    | **Premium** | `gpt-5.2`、`gpt-4o`、`gpt-4.1` | 高要求问答、复杂审核 |
+
+    <Info>默认推荐 **Balanced 档的 `gpt-5-mini`**。创建后仍可在 Agent 设置里切换档位和具体模型。</Info>
+  </Step>
+
+  <Step title="命名 Bot">
+    输入 Bot 的名称（英文标识，仅限**小写字母、数字、连字符**，最多 63 字符），例如 `my-project-bot`。
+
+    点击 **创建 Bot**，平台会从 Bot Pool 分配一个已注册的 Telegram Bot，同时启动 Agent 网关，约 30 秒就绪。
+  </Step>
+
+  <Step title="Bot 就绪">
+    状态变绿后，Bot 已在线。控制台会显示它的 `@botUsername`，点击 **在 Telegram 中打开** 可以直接跳转私聊。
+
+    接下来把它[加入 Telegram 群组](/docs/channels/telegram)。
+  </Step>
+</Steps>
+
+<Warning>**Bot 的头像和用户名创建后暂不支持修改。** 命名和预设选择请谨慎。</Warning>
+
+## 下一步
+
+<CardGroup cols={2}>
+  <Card title="人设配置" icon="sparkles" href="/docs/agent/personality">
+    追加项目专属指令
+  </Card>
+  <Card title="接入 Telegram" icon="paper-plane" href="/docs/channels/telegram">
+    把 Bot 加入群组
+  </Card>
+  <Card title="知识库" icon="brain" href="/docs/agent/knowledge-base">
+    让 Bot 答得更准
+  </Card>
+  <Card title="审核规则" icon="shield" href="/docs/moderation/rules">
+    部署基线规则集
+  </Card>
+</CardGroup>

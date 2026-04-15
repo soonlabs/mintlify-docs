@@ -1,0 +1,66 @@
+---
+title: Knowledge Base
+description: "Give your agent domain-specific knowledge"
+---
+
+The Knowledge Base lets you upload documents that your AI agent references when answering questions. This turns a general-purpose AI into a domain expert for your community.
+
+## How It Works
+
+When a community member asks a question, the agent:
+
+1. Searches the knowledge base for relevant passages (semantic search)
+2. Uses matching content as context for generating a response
+3. Responds with information grounded in your documents
+
+This means the agent can accurately answer questions about your project, product, or community — not just general knowledge.
+
+## Capacity Limits
+
+| Dimension | Limit |
+|-----------|-------|
+| Documents per Bot | **50** |
+| Body size per document | **50 KB** (~50,000 English characters) |
+| Title length | 256 bytes |
+
+Split larger sources into multiple documents, or remove older ones before adding new content.
+
+## Adding Documents
+
+<Steps>
+  <Step title="Navigate to Knowledge">
+    Open **Knowledge** from the sidebar.
+  </Step>
+
+  <Step title="Create a Document">
+    Click **Add Document** and fill in:
+    - **Title** — a descriptive name (e.g. "FAQ", "Tokenomics", "Community Rules")
+    - **Summary** (optional) — a 1–2 sentence overview for internal management
+    - **Content** — paste or type the document body (Markdown or plain text)
+  </Step>
+
+  <Step title="Save">
+    Click **Save**. The document is semantically indexed and available to the Bot as soon as indexing completes.
+  </Step>
+</Steps>
+
+## Best Practices
+
+<Tip>
+**Keep documents focused.** One topic per document produces better search results than a single large document covering everything.
+</Tip>
+
+**Good use cases:**
+- Frequently Asked Questions (FAQ)
+- Product or project documentation
+- Community rules and guidelines
+- Support troubleshooting guides
+- Onboarding information for new members
+
+**Tips for quality:**
+- Write in clear, concise language
+- Include common variations of questions users might ask
+- Update documents when information changes
+- Remove outdated content to avoid contradictions
+
+<Note>Documents are processed and indexed for semantic search. The agent finds relevant content even when users don't use exact keywords from your documents.</Note>

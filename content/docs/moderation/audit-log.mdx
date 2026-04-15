@@ -1,0 +1,37 @@
+---
+title: Audit Log
+description: "Review auto-moderation action history"
+---
+
+The Audit Log records every moderation action taken by your agent, providing full transparency into automated enforcement.
+
+## Viewing Logs
+
+Navigate to **Moderation** and click the **Audit Log** tab. Each entry shows:
+
+| Column | Description |
+|--------|-------------|
+| **Time** | When the action was executed |
+| **Target** | Username or user ID of the affected user |
+| **Action** | Type of action taken (mute, kick, ban) |
+| **Reason** | Which moderation rule triggered the action |
+| **Chat** | The group where the action occurred |
+| **Status** | Execution result |
+
+## Action Statuses
+
+| Status | Meaning |
+|--------|---------|
+| **Success** | Action executed successfully |
+| **Pending** | Action is queued for execution |
+| **Retrying** | Execution failed, retrying automatically |
+| **Failed** | Execution failed (hover for error details) |
+| **Perm. Failed** | Permanently failed after all retries |
+
+Failed actions display error details — hover over the status to see the full error message.
+
+## Pagination
+
+Logs are displayed 20 per page. Use the **Prev** / **Next** buttons to navigate. The total count is shown at the bottom left.
+
+<Tip>Review your audit logs regularly to check for false positives. If a rule triggers too often on legitimate messages, make the rule description more specific.</Tip>

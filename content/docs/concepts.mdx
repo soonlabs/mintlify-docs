@@ -1,0 +1,86 @@
+---
+title: Core Concepts
+description: "Understand NebulaClaw's core components"
+---
+
+## Bot (Agent)
+
+A **Bot** is your AI instance — one Bot maps to one dedicated Agent gateway with its own AI model, persona, knowledge base, moderation rules, and connected Telegram groups.
+
+After purchase the platform assigns a pre-registered Telegram Bot from its internal **Bot Pool** and hosts it for you — **no interaction with @BotFather needed**. Gateway bootstrap takes about 30 seconds; the console polls status automatically.
+
+<Warning>**A Bot's avatar and username cannot be changed after creation.** Name it carefully.</Warning>
+
+## Community Presets
+
+Four built-in community role presets, each with a tuned persona prompt, avatar, and tone:
+
+| Preset | Best for |
+|--------|----------|
+| **Project Community** | Web3 projects / product communities — whitepaper Q&A + anti-shill |
+| **KOL / Alpha Group** | Paid alpha / research groups — signal-to-noise control, DYOR reminders |
+| **Trader Community** | Trading discussion — market-neutral, no investment advice |
+| **Meme Community** | Degen / meme-coin groups — high-energy vibes + strict scam-link enforcement |
+
+After choosing a preset you can further enter **Custom** mode to append project-specific instructions (e.g. "route staking questions to /staking").
+
+<Tip>Switching presets preserves your custom text — experiment freely.</Tip>
+
+## Model Tiers
+
+Three tiers covering different cost / quality needs:
+
+| Tier | Example models | Best for |
+|------|---------------|----------|
+| **Economy** | `gpt-4.1-nano`, `gpt-4o-mini` | High volume, cost-sensitive |
+| **Balanced** (default recommended) | `gpt-5-mini`, `gpt-4.1-mini` | General use, balanced quality and cost |
+| **Premium** | `gpt-5.2`, `gpt-4o`, `gpt-4.1` | Demanding Q&A, complex moderation |
+
+The model can be switched anytime from Agent settings.
+
+## Knowledge Base
+
+A collection of documents the Agent consults when answering. Each Bot supports up to **50 documents**; each document body is up to **50 KB**; titles up to 256 bytes.
+
+Documents are **semantically indexed** — the Agent finds relevant passages even without exact keyword hits.
+
+## Moderation Rules
+
+Rules are written in natural language — the AI interprets and enforces them. No keyword dictionaries required:
+
+> "Messages pushing 'guaranteed returns' or 'official airdrop' scams"
+
+Available actions:
+
+| Action | Effect |
+|--------|--------|
+| **mute** | Temporarily prevent sending — set a duration or permanent |
+| **kick** | Remove from the group — can rejoin via invite link |
+| **ban** | Permanent removal — requires manual unban |
+
+Every action is recorded in the **Audit Log** with trigger rule, context, and timestamp for compliance review.
+
+## Channels
+
+The messaging platforms your Bot connects to:
+
+- **Telegram** — full support: group management, @-mention control, multi-language fallback
+- **Discord** — planned
+- **Slack** — planned
+
+## Groups & Fallback Language
+
+Each Bot can serve multiple Telegram groups. Groups must be **added manually** by Chat ID (`-100...`) in **Moderation → Telegram Groups**. Per-group settings:
+
+- **Require Mention**: when on, the Bot only replies when @-mentioned; off means it watches all messages.
+- **Fallback Language**: the Bot auto-detects the user's language and replies in kind. **When it can't determine the language** (e.g. the message is only emojis, images, or mixed-language), it falls back to this setting. Default is "**Follow user**" (auto); can also be set to a specific language (EN / ZH / KO / TR / ID / RU / VI).
+
+## Token Credits
+
+AI inference is metered in tokens:
+
+- **Monthly credits**: $9.99/month subscription includes $5.00 token credits — unused balance **resets at the end of each billing cycle**
+- **Top-up credits**: buy packs from Billing — **never expire**
+- Monthly credits are consumed first; once depleted, the bot draws from top-up balance. When both are exhausted the bot pauses — top up to resume
+
+See [Pricing](/docs/billing/plans) for details.

@@ -1,0 +1,12 @@
+@import 'fumadocs-ui/style.css';
+
+/* NebulaClaw purple theme */
+:root {
+  --color-fd-primary: oklch(62% 0.22 295);
+  --color-fd-ring: oklch(62% 0.22 295);
+}
+
+.dark {
+  --color-fd-primary: oklch(72% 0.18 295);
+  --color-fd-ring: oklch(72% 0.18 295);
+}

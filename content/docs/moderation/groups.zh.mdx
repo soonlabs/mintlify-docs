@@ -1,0 +1,52 @@
+---
+title: 群组管理
+description: "管理连接到 Agent 的 Telegram 群组"
+---
+
+Telegram 群组表格显示 Agent 连接的所有群组及其配置选项。
+
+## 群组列表
+
+| 列 | 说明 |
+|----|------|
+| **群组** | 群组名称（来自 Telegram）|
+| **Chat ID** | Telegram 群组标识符 |
+| **需要 @** | Bot 是否需要被 @ 提及才回复 |
+| **Fallback Language** | Bot 在该群的回复语言——"跟随用户"则自动识别，指定语言则固定使用 |
+| **操作** | 删除按钮 |
+
+## 添加群组
+
+群组需要**手动添加**——仅仅把 Bot 拉进群并不会让它出现在列表里，必须在控制台登记 Chat ID 后 Bot 才会在该群响应。
+
+<Steps>
+  <Step title="把 Bot 加入 Telegram 群并设为管理员">
+    Bot 必须是群管理员才能执行审核动作（mute / kick / ban）。
+  </Step>
+  <Step title="获取群组 Chat ID">
+    打开 [@userinfobot](https://t.me/userinfobot) 私聊，点击 **Menu → Group**（或 **My Group**），从列表选择目标群组即可获得 Chat ID（`-100` 开头）。**不需要把 @userinfobot 加进群。**
+  </Step>
+  <Step title="在控制台添加">
+    在 **Moderation → Telegram Groups** 输入 Chat ID，选择 Bot 回复语言（默认 **跟随用户**），点击 **添加群组**。
+  </Step>
+</Steps>
+
+<Warning>只有被 Bot 所属账号拉入的群组才能被登记。用别人的 Bot 加进来再登记是无效的。</Warning>
+
+## 群组设置
+
+### 需要 @ 提及
+
+| 设置 | 行为 |
+|------|------|
+| **开启** | Bot 只在被 @ 提及时回复 |
+| **关闭** | Bot 监控所有消息，可能主动回复 |
+
+### Fallback Language（Bot 回复语言）
+
+| 选项 | 行为 |
+|------|------|
+| **跟随用户**（默认） | Bot 自动识别语种并用对应语言回复；识别不了时尝试从上下文推断 |
+| 指定语言（英 / 中 / 韩 / 土 / 印尼 / 俄 / 越） | Bot 仍然优先识别用户语言回复，**仅在无法识别时**（如纯表情、图片）用该语言兜底 |
+
+<Warning>Agent 必须在线才能修改群组设置。离线时设置为只读。</Warning>
