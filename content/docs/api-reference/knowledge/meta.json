@@ -1,9 +1,0 @@
-{
-  "title": "Knowledge",
-  "pages": [
-    "create-document",
-    "list-documents",
-    "update-document",
-    "delete-document"
-  ]
-}

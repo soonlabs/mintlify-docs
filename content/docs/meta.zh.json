@@ -9,7 +9,6 @@
     "channels",
     "moderation",
     "analytics",
-    "billing",
-    "api-reference"
+    "billing"
   ]
 }

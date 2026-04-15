@@ -313,3 +313,111 @@
 .nc-card-body > :last-child {
   margin-bottom: 0;
 }
+
+/* ---------- Docs page polish ---------- */
+
+/* Bigger, tighter title with subtle bottom accent */
+article > h1.H1,
+article > h1:first-child {
+  font-size: clamp(2rem, 3.2vw, 2.5rem);
+  font-weight: 750;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+  margin-bottom: 0.5rem;
+  position: relative;
+  padding-left: 0.75rem;
+}
+
+article > h1.H1::before,
+article > h1:first-child::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.3em;
+  bottom: 0.3em;
+  width: 3px;
+  border-radius: 2px;
+  background: linear-gradient(180deg, var(--nc-primary), transparent);
+}
+
+/* Slightly larger, more readable description */
+article > p.mb-8.text-lg,
+article > p:nth-child(2) {
+  font-size: 1.05rem;
+  line-height: 1.65;
+  margin-left: 0.75rem;
+  max-width: 46rem;
+}
+
+/* Steps — prominent purple number badges with ring */
+.fd-steps {
+  padding-left: 0;
+  counter-reset: step;
+}
+
+.fd-steps .fd-step {
+  position: relative;
+  padding-left: 3rem;
+  padding-bottom: 1.25rem;
+  border-left: 1px dashed color-mix(in oklab, var(--color-fd-border) 70%, transparent);
+  margin-left: 1rem;
+}
+
+.fd-steps .fd-step:last-child {
+  border-left-color: transparent;
+  padding-bottom: 0;
+}
+
+.fd-steps .fd-step::before {
+  counter-increment: step;
+  content: counter(step);
+  position: absolute;
+  left: -1rem;
+  top: -0.1rem;
+  width: 2rem;
+  height: 2rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 0.9rem;
+  color: var(--nc-primary);
+  background: var(--color-fd-background);
+  border: 1px solid var(--nc-primary);
+  border-radius: 999px;
+  box-shadow: 0 0 0 4px var(--nc-primary-faint);
+}
+
+.fd-steps .fd-step h3 {
+  margin-top: 0;
+  font-size: 1.1rem;
+  font-weight: 650;
+  letter-spacing: -0.01em;
+}
+
+/* Callout refinement — soft rounded, subtle tint */
+[role='alert'],
+.callout,
+div[class*='callout'] {
+  border-radius: 0.65rem;
+}
+
+/* Inline code pill — softer, more readable */
+:where(article) :not(pre) > code {
+  padding: 0.1rem 0.35rem;
+  border-radius: 0.3rem;
+  font-size: 0.88em;
+  background: var(--nc-primary-faint);
+  color: var(--nc-primary);
+  border: 1px solid color-mix(in oklab, var(--nc-primary) 20%, transparent);
+}
+
+/* Code block surface */
+pre {
+  border: 1px solid var(--color-fd-border);
+}
+
+/* Links in body — underline on hover with purple */
+article a:not(.nc-card):hover {
+  color: var(--nc-primary);
+}
