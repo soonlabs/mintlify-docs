@@ -55,12 +55,6 @@ export function baseOptions(locale: string): BaseLayoutProps {
       },
       {
         type: 'main',
-        text: locale === 'zh' ? '官网' : 'Website',
-        url: 'https://nebulaclaw.ai',
-        external: true,
-      },
-      {
-        type: 'main',
         text: locale === 'zh' ? '社区' : 'Community',
         url: 'https://t.me/nebulaclaw',
         external: true,

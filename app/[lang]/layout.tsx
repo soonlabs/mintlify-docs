@@ -42,7 +42,7 @@ export default async function Layout({ params, children }: LayoutProps<'/[lang]'
         }}
       >
         <RootProvider
-          theme={{ forcedTheme: 'dark', enableSystem: false }}
+          theme={{ defaultTheme: 'dark', enableSystem: true }}
           i18n={i18nUI.provider(lang)}
         >
           <DocsLayout {...baseOptions(lang)} tree={source.getPageTree(lang)}>

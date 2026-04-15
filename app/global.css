@@ -1,6 +1,6 @@
 @import 'fumadocs-ui/style.css';
 
-/* ---------- Mintlify-style NebulaClaw theme ---------- */
+/* ---------- NebulaClaw theme (light + dark) ---------- */
 
 :root {
   --color-fd-primary: oklch(62% 0.22 295);
@@ -8,8 +8,8 @@
   --nc-primary: #8b5cf6;
   --nc-primary-hover: #7c3aed;
   --nc-primary-glow: rgba(139, 92, 246, 0.22);
-  --nc-primary-faint: rgba(139, 92, 246, 0.09);
-  --nc-primary-border: rgba(139, 92, 246, 0.34);
+  --nc-primary-faint: rgba(139, 92, 246, 0.08);
+  --nc-primary-border: rgba(139, 92, 246, 0.3);
 }
 
 .dark {
@@ -37,11 +37,16 @@ body {
 body {
   position: relative;
   font-family: var(--font-sans), ui-sans-serif, system-ui, -apple-system, sans-serif;
+  background: var(--color-fd-background);
+  color: var(--color-fd-foreground);
+}
+
+/* Subtle purple ambient glow — only in dark mode */
+.dark body {
   background:
     radial-gradient(1100px 420px at 70% -10%, color-mix(in oklab, var(--nc-primary) 22%, transparent), transparent 72%),
     radial-gradient(900px 380px at 0% 0%, rgba(56, 189, 248, 0.1), transparent 70%),
     var(--color-fd-background);
-  color: var(--color-fd-foreground);
 }
 
 code,
@@ -51,17 +56,20 @@ samp {
   font-family: var(--font-mono), ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
 }
 
-/* Grid overlay removed — vertical lines visually collided with the
-   Step component's connector line, making it look like 2-3 parallel
-   bars near each step badge. */
+/* ---------- Header ---------- */
 
 header {
   backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--color-fd-border);
+}
+
+.dark header {
   background: color-mix(in oklab, var(--color-fd-background) 86%, #0b1220) !important;
   border-bottom: 1px solid color-mix(in oklab, var(--color-fd-border) 88%, white 12%);
 }
 
-/* Logo theme switching */
+/* ---------- Logo theme switching ---------- */
+
 .nc-logo-dark {
   display: none;
 }
@@ -123,16 +131,16 @@ article strong {
   color: color-mix(in oklab, var(--color-fd-foreground) 92%, var(--nc-primary) 8%);
 }
 
-/* ---------- Inline code ---------- */
+/* ---------- Inline code (soft purple pill, mode-aware) ---------- */
 
 :where(article) :not(pre) > code {
   padding: 0.12rem 0.42rem;
   border-radius: 0.4rem;
   font-size: 0.875em;
   font-weight: 560;
-  background: color-mix(in oklab, var(--color-fd-muted) 70%, black 30%);
+  background: var(--nc-primary-faint);
   color: var(--nc-primary);
-  border: 1px solid color-mix(in oklab, var(--nc-primary) 35%, var(--color-fd-border));
+  border: 1px solid color-mix(in oklab, var(--nc-primary) 30%, var(--color-fd-border));
 }
 
 /* ---------- Code blocks ---------- */
@@ -140,8 +148,11 @@ article strong {
 pre {
   border: 1px solid color-mix(in oklab, var(--color-fd-border) 84%, var(--nc-primary) 16%);
   border-radius: 0.9rem;
-  background: color-mix(in oklab, var(--color-fd-card) 78%, #070c16) !important;
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.03);
+}
+
+.dark pre {
+  background: color-mix(in oklab, var(--color-fd-card) 78%, #070c16) !important;
 }
 
 /* ---------- Links ---------- */
@@ -163,7 +174,6 @@ article td a:not(.nc-card):hover {
   text-underline-offset: 3px;
 }
 
-/* Heading anchors (Fumadocs wraps headings in <a>) — keep inherited color */
 article h1 a,
 article h2 a,
 article h3 a,
@@ -191,7 +201,6 @@ article h6 a {
   border-left: none;
 }
 
-/* Numbered badge — thin outline + dim purple fill + white bold digit */
 .fd-steps .fd-step::before {
   counter-increment: step;
   content: counter(step);
@@ -213,7 +222,6 @@ article h6 a {
   z-index: 1;
 }
 
-/* Vertical line connecting consecutive step badges */
 .fd-steps .fd-step:not(:last-child)::after {
   content: '';
   position: absolute;
@@ -238,12 +246,9 @@ article h6 a {
   margin-top: 0;
 }
 
-/* ---------- Callouts ----------
- * Fumadocs renders callouts as a flex container with a 2px accent-bar div,
- * an icon svg, and content. The OUTER container has no "callout" in its
- * class; only the inner bar and icon do (via --callout-color). Trying to
- * target with [class*='callout'] blew up the inner 2px bar into an empty
- * padded box. We now leave Fumadocs' native styling alone. */
+/* ---------- Callouts ---------- */
+/* Leave Fumadocs' native callout styling alone — targeting with
+   [class*='callout'] hit the inner 2px bar and broke layout. */
 
 /* ---------- Tables ---------- */
 
@@ -254,6 +259,10 @@ article table {
 }
 
 article thead {
+  background: var(--color-fd-muted);
+}
+
+.dark article thead {
   background: color-mix(in oklab, var(--color-fd-muted) 72%, black 28%);
 }
 
@@ -262,28 +271,25 @@ article td {
   padding: 0.65rem 0.85rem;
 }
 
-/* ---------- Sidebar refinement ---------- */
+/* ---------- Sidebar ---------- */
 
 aside[class*='sidebar'] {
   font-size: 0.92rem;
+  border-right: 1px solid var(--color-fd-border);
+}
+
+.dark aside[class*='sidebar'] {
   background: color-mix(in oklab, var(--color-fd-background) 82%, #0a101a) !important;
   border-right: 1px solid color-mix(in oklab, var(--color-fd-border) 84%, white 16%);
 }
 
 aside a[aria-current='page'] {
-  background: color-mix(in oklab, var(--nc-primary-faint) 90%, transparent) !important;
+  background: var(--nc-primary-faint) !important;
   border: 1px solid var(--nc-primary-border);
   color: var(--nc-primary) !important;
 }
 
-/* Site is dark-mode only (forcedTheme: 'dark'). Hide the theme toggle
-   since clicking it does nothing meaningful. */
-aside [data-theme-toggle],
-aside div:has(> button[data-theme-toggle]) {
-  display: none !important;
-}
-
-/* Language picker button — larger, more polished */
+/* Language picker */
 aside button[aria-label='Choose a language'],
 aside button[aria-label='选择语言'] {
   border: 1px solid var(--color-fd-border) !important;
@@ -301,7 +307,30 @@ aside button[aria-label='选择语言']:hover {
   border-color: var(--nc-primary-border) !important;
 }
 
-/* ---------- Cards ---------- */
+/* Theme toggle — Fumadocs wraps the single sun/moon button in a
+   segmented-control shell. Strip it so the button stands alone. */
+aside div.rounded-lg:has(> button[data-theme-toggle]) {
+  background: transparent !important;
+  border: none !important;
+  padding: 0 !important;
+  width: fit-content;
+  margin-inline-start: auto;
+}
+
+aside button[data-theme-toggle] {
+  margin-inline-start: 0 !important;
+  border: 1px solid var(--color-fd-border) !important;
+  border-radius: 0.5rem !important;
+  background: var(--color-fd-card) !important;
+  transition: background 150ms ease, border-color 150ms ease;
+}
+
+aside button[data-theme-toggle]:hover {
+  background: var(--color-fd-accent) !important;
+  border-color: var(--nc-primary-border) !important;
+}
+
+/* ---------- Cards (MDX <Card>) ---------- */
 
 .nc-card-group {
   display: grid;
@@ -322,10 +351,14 @@ aside button[aria-label='选择语言']:hover {
   padding: 1.05rem 1.1rem;
   border: 1px solid color-mix(in oklab, var(--color-fd-border) 83%, var(--nc-primary) 17%);
   border-radius: 0.9rem;
-  background: color-mix(in oklab, var(--color-fd-card) 84%, #0a1017);
+  background: var(--color-fd-card);
   color: var(--color-fd-foreground);
   text-decoration: none;
   transition: border-color 180ms ease, background 180ms ease, transform 180ms ease, box-shadow 180ms ease;
+}
+
+.dark .nc-card {
+  background: color-mix(in oklab, var(--color-fd-card) 84%, #0a1017);
 }
 
 .nc-card-interactive:hover {
@@ -391,8 +424,8 @@ aside button[aria-label='选择语言']:hover {
   margin-bottom: 0;
 }
 
-/* Remove inline-code purple pill style inside cards (too busy) */
 .nc-card :where(:not(pre) > code) {
   background: var(--color-fd-muted);
   color: var(--color-fd-foreground);
+  border: none;
 }
