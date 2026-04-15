@@ -208,3 +208,108 @@
   color: var(--color-fd-muted-foreground);
   margin: 0;
 }
+
+/* ---------- MDX Content Cards ---------- */
+
+.nc-card-group {
+  display: grid;
+  grid-template-columns: repeat(var(--nc-cols, 2), minmax(0, 1fr));
+  gap: 0.75rem;
+  margin: 1.25rem 0;
+}
+
+@media (max-width: 640px) {
+  .nc-card-group {
+    grid-template-columns: 1fr;
+  }
+}
+
+.nc-card {
+  position: relative;
+  display: block;
+  padding: 1rem 1.1rem;
+  border: 1px solid var(--color-fd-border);
+  border-radius: 0.75rem;
+  background: var(--color-fd-card);
+  color: var(--color-fd-foreground);
+  text-decoration: none;
+  overflow: hidden;
+  transition: border-color 200ms ease, transform 200ms ease, box-shadow 200ms ease;
+}
+
+.nc-card::before {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(135deg, transparent 40%, var(--nc-primary-glow) 100%);
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity 200ms ease;
+  pointer-events: none;
+}
+
+.nc-card-interactive:hover {
+  border-color: var(--nc-primary);
+  transform: translateY(-1px);
+  box-shadow: 0 8px 28px -12px var(--nc-primary-glow);
+}
+
+.nc-card-interactive:hover::before {
+  opacity: 1;
+}
+
+.nc-card-head {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  font-weight: 650;
+  font-size: 0.98rem;
+  color: var(--color-fd-foreground);
+}
+
+.nc-card-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.75rem;
+  height: 1.75rem;
+  border-radius: 0.45rem;
+  background: var(--nc-primary-faint);
+  color: var(--nc-primary);
+  flex-shrink: 0;
+}
+
+.nc-card-title {
+  flex: 1;
+  min-width: 0;
+}
+
+.nc-card-arrow {
+  display: inline-flex;
+  color: var(--color-fd-muted-foreground);
+  transition: transform 200ms ease, color 200ms ease;
+}
+
+.nc-card-interactive:hover .nc-card-arrow {
+  transform: translateX(3px);
+  color: var(--nc-primary);
+}
+
+.nc-card-body {
+  margin-top: 0.5rem;
+  font-size: 0.88rem;
+  line-height: 1.55;
+  color: var(--color-fd-muted-foreground);
+}
+
+.nc-card-body > :first-child {
+  margin-top: 0;
+}
+.nc-card-body > :last-child {
+  margin-bottom: 0;
+}

@@ -1,11 +1,20 @@
 import * as React from 'react';
 import { Callout } from 'fumadocs-ui/components/callout';
-import { Card as FumaCard, Cards as FumaCards } from 'fumadocs-ui/components/card';
 import {
   Accordion as FumaAccordion,
   Accordions as FumaAccordions,
 } from 'fumadocs-ui/components/accordion';
 import { Step as FumaStep, Steps as FumaSteps } from 'fumadocs-ui/components/steps';
+import {
+  icons as lucideIcons,
+  ArrowRight,
+  Rocket,
+  Bot,
+  BookOpen,
+  MessageCircle,
+  Send,
+  Sparkles,
+} from 'lucide-react';
 
 /**
  * Mintlify → Fumadocs compatibility shims.
@@ -19,12 +28,56 @@ type CardProps = {
   children?: React.ReactNode;
 };
 
-export function Card({ title, href, children, icon: _icon }: CardProps) {
-  return (
-    <FumaCard title={title ?? ''} href={href}>
-      {children}
-    </FumaCard>
+// Resolve a Mintlify-style icon name (kebab or lower) to a Lucide icon.
+const iconAliases: Record<string, keyof typeof lucideIcons> = {
+  rocket: 'Rocket',
+  bot: 'Bot',
+  book: 'BookOpen',
+  'book-open': 'BookOpen',
+  'message-circle': 'MessageCircle',
+  'paper-plane': 'Send',
+  send: 'Send',
+  sparkles: 'Sparkles',
+};
+
+function resolveIcon(icon: CardProps['icon']): React.ReactNode {
+  if (!icon) return <Sparkles size={16} />;
+  if (typeof icon !== 'string') return icon;
+  const pascal = iconAliases[icon] ?? (icon.charAt(0).toUpperCase() + icon.slice(1));
+  const LucideIcon = lucideIcons[pascal as keyof typeof lucideIcons];
+  if (LucideIcon) return <LucideIcon size={16} />;
+  return <Sparkles size={16} />;
+}
+
+export function Card({ title, href, children, icon }: CardProps) {
+  const body = (
+    <>
+      <div className="nc-card-head">
+        <span className="nc-card-icon">{resolveIcon(icon)}</span>
+        {title ? <span className="nc-card-title">{title}</span> : null}
+        {href ? (
+          <span className="nc-card-arrow">
+            <ArrowRight size={14} />
+          </span>
+        ) : null}
+      </div>
+      {children ? <div className="nc-card-body">{children}</div> : null}
+    </>
   );
+
+  if (href) {
+    const external = href.startsWith('http');
+    return (
+      <a
+        className="nc-card nc-card-interactive"
+        href={href}
+        {...(external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+      >
+        {body}
+      </a>
+    );
+  }
+  return <div className="nc-card">{body}</div>;
 }
 
 type CardGroupProps = {
@@ -32,8 +85,15 @@ type CardGroupProps = {
   children?: React.ReactNode;
 };
 
-export function CardGroup({ children }: CardGroupProps) {
-  return <FumaCards>{children}</FumaCards>;
+export function CardGroup({ cols = 2, children }: CardGroupProps) {
+  return (
+    <div
+      className="nc-card-group"
+      style={{ ['--nc-cols' as string]: String(cols) }}
+    >
+      {children}
+    </div>
+  );
 }
 
 // Callouts ------------------------------------------------------------------
