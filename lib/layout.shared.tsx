@@ -4,10 +4,10 @@ import { defineI18nUI } from 'fumadocs-ui/i18n';
 
 export const i18nUI = defineI18nUI(i18n, {
   en: {
-    displayName: 'English',
+    displayName: '🇺🇸 English',
   },
   zh: {
-    displayName: '中文',
+    displayName: '🇨🇳 简体中文',
     toc: '目录',
     search: '搜索文档',
     lastUpdate: '最后更新于',
@@ -17,6 +17,13 @@ export const i18nUI = defineI18nUI(i18n, {
     chooseLanguage: '选择语言',
   },
 });
+
+// With hideLocale: 'default-locale', the default (en) has no URL prefix.
+// Use '/' for en, '/zh' for zh.
+function localePath(locale: string, path = '') {
+  const prefix = locale === 'en' ? '' : `/${locale}`;
+  return `${prefix}${path}` || '/';
+}
 
 export function baseOptions(locale: string): BaseLayoutProps {
   return {
@@ -37,14 +44,9 @@ export function baseOptions(locale: string): BaseLayoutProps {
           />
         </>
       ),
-      url: `/${locale}`,
+      url: localePath(locale),
     },
     links: [
-      {
-        type: 'main',
-        text: locale === 'zh' ? '文档' : 'Documentation',
-        url: `/${locale}/docs`,
-      },
       {
         type: 'main',
         text: locale === 'zh' ? '控制台' : 'Console',

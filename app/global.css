@@ -1,19 +1,34 @@
 @import 'fumadocs-ui/style.css';
 
-/* NebulaClaw purple theme */
+/* ---------- Mintlify-Maple-inspired NebulaClaw theme ---------- */
+
 :root {
   --color-fd-primary: oklch(62% 0.22 295);
   --color-fd-ring: oklch(62% 0.22 295);
   --nc-primary: #8b5cf6;
-  --nc-primary-glow: rgba(139, 92, 246, 0.35);
-  --nc-primary-faint: rgba(139, 92, 246, 0.08);
+  --nc-primary-hover: #7c3aed;
+  --nc-primary-glow: rgba(139, 92, 246, 0.22);
+  --nc-primary-faint: rgba(139, 92, 246, 0.07);
+  --nc-primary-border: rgba(139, 92, 246, 0.3);
 }
 
 .dark {
+  /* Soft off-black, slightly cool — avoid pure #000 */
+  --color-fd-background: oklch(16% 0.01 280);
+  --color-fd-card: oklch(19% 0.012 280);
+  --color-fd-accent: oklch(22% 0.014 280);
+  --color-fd-muted: oklch(22% 0.014 280);
+  --color-fd-border: oklch(25% 0.015 280);
+  --color-fd-foreground: oklch(95% 0.005 280);
+  --color-fd-muted-foreground: oklch(66% 0.015 280);
+
   --color-fd-primary: oklch(72% 0.18 295);
   --color-fd-ring: oklch(72% 0.18 295);
-  --nc-primary-glow: rgba(167, 139, 250, 0.28);
-  --nc-primary-faint: rgba(167, 139, 250, 0.06);
+  --nc-primary: #a78bfa;
+  --nc-primary-hover: #c4b5fd;
+  --nc-primary-glow: rgba(167, 139, 250, 0.2);
+  --nc-primary-faint: rgba(167, 139, 250, 0.08);
+  --nc-primary-border: rgba(167, 139, 250, 0.25);
 }
 
 /* Logo theme switching */
@@ -30,192 +45,208 @@
   display: none;
 }
 
-/* ---------- Homepage ---------- */
+/* ---------- Typography ---------- */
 
-.nc-home {
+article {
+  --fd-typography-body: 1rem;
+  line-height: 1.7;
+}
+
+/* Minimal h1 — let type do the work, no accent bar */
+article > h1.H1,
+article > h1:first-child {
+  font-size: clamp(1.875rem, 2.6vw, 2.25rem);
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  line-height: 1.2;
+  margin-bottom: 0.6rem;
+  color: var(--color-fd-foreground);
+}
+
+/* Lead description */
+article > p.mb-8.text-lg,
+article > p:nth-child(2) {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: var(--color-fd-muted-foreground);
+  margin-bottom: 2rem;
+  max-width: 46rem;
+}
+
+/* Section headings */
+article h2 {
+  font-weight: 650;
+  letter-spacing: -0.015em;
+  margin-top: 2.5rem;
+}
+
+article h3 {
+  font-weight: 625;
+  letter-spacing: -0.01em;
+}
+
+/* Prose readability */
+article p,
+article li {
+  line-height: 1.7;
+}
+
+/* ---------- Inline code: Mintlify-style subtle pill ---------- */
+
+:where(article) :not(pre) > code {
+  padding: 0.08rem 0.35rem;
+  border-radius: 0.3rem;
+  font-size: 0.875em;
+  font-weight: 500;
+  background: var(--color-fd-muted);
+  color: var(--nc-primary);
+  border: none;
+}
+
+/* ---------- Code blocks ---------- */
+
+pre {
+  border: 1px solid var(--color-fd-border);
+  border-radius: 0.6rem;
+}
+
+/* ---------- Links ---------- */
+
+article p a:not(.nc-card),
+article li a:not(.nc-card),
+article td a:not(.nc-card) {
+  color: var(--nc-primary);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+article p a:not(.nc-card):hover,
+article li a:not(.nc-card):hover,
+article td a:not(.nc-card):hover {
+  color: var(--nc-primary-hover);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+}
+
+/* Heading anchors (Fumadocs wraps headings in <a>) — keep inherited color */
+article h1 a,
+article h2 a,
+article h3 a,
+article h4 a,
+article h5 a,
+article h6 a {
+  color: inherit;
+  text-decoration: none;
+  font-weight: inherit;
+}
+
+/* ---------- Steps: minimalist circular badges ---------- */
+
+.fd-steps {
+  padding-left: 0;
+  counter-reset: step;
+  margin-top: 1.5rem;
+}
+
+.fd-steps .fd-step {
   position: relative;
-  flex: 1;
-  display: flex;
-  flex-direction: column;
+  padding-left: 2.5rem;
+  padding-bottom: 1.75rem;
+  margin-left: 0;
+  border-left: none;
+}
+
+.fd-steps .fd-step::before {
+  counter-increment: step;
+  content: counter(step);
+  position: absolute;
+  left: 0;
+  top: 0.1rem;
+  width: 1.75rem;
+  height: 1.75rem;
+  display: inline-flex;
   align-items: center;
-  padding: clamp(3rem, 8vw, 6rem) 1.5rem 5rem;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 0.85rem;
+  font-variant-numeric: tabular-nums;
+  color: #fff;
+  background: linear-gradient(135deg, var(--nc-primary) 0%, var(--nc-primary-hover) 100%);
+  border-radius: 999px;
+  box-shadow:
+    0 0 0 3px color-mix(in oklab, var(--nc-primary) 12%, transparent),
+    0 4px 14px -2px var(--nc-primary-glow);
+}
+
+.fd-steps .fd-step h3 {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+  font-size: 1.05rem;
+  font-weight: 650;
+  letter-spacing: -0.015em;
+  line-height: 1.95rem;
+}
+
+.fd-steps .fd-step p:first-of-type {
+  margin-top: 0;
+}
+
+/* ---------- Callouts: tint + thin left bar + soft icon ---------- */
+
+div[class*='callout'],
+[role='alert'] {
+  border-radius: 0.6rem !important;
+  border: 1px solid var(--color-fd-border) !important;
+  padding: 0.9rem 1rem !important;
+  background: var(--color-fd-card) !important;
+  position: relative;
   overflow: hidden;
 }
 
-/* Radial purple glow */
-.nc-home-bg {
+div[class*='callout']::before,
+[role='alert']::before {
+  content: '';
   position: absolute;
-  inset: 0;
-  pointer-events: none;
-  background:
-    radial-gradient(ellipse 80% 60% at 50% -10%, var(--nc-primary-glow), transparent 60%),
-    radial-gradient(ellipse 50% 40% at 80% 30%, var(--nc-primary-faint), transparent 70%),
-    radial-gradient(ellipse 60% 50% at 20% 40%, var(--nc-primary-faint), transparent 70%);
-  z-index: 0;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: var(--callout-color, var(--nc-primary));
+  opacity: 0.8;
 }
 
-/* Faint grid background */
-.nc-home-grid {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  background-image:
-    linear-gradient(to right, rgba(139, 92, 246, 0.04) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(139, 92, 246, 0.04) 1px, transparent 1px);
-  background-size: 48px 48px;
-  mask-image: radial-gradient(ellipse 70% 60% at 50% 35%, black, transparent 80%);
-  z-index: 0;
-}
+/* ---------- Tables ---------- */
 
-.dark .nc-home-grid {
-  background-image:
-    linear-gradient(to right, rgba(167, 139, 250, 0.06) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(167, 139, 250, 0.06) 1px, transparent 1px);
-}
-
-.nc-hero {
-  position: relative;
-  z-index: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  max-width: 48rem;
-  gap: 1.25rem;
-  margin-bottom: 5rem;
-}
-
-.nc-eyebrow {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.4rem;
-  padding: 0.35rem 0.8rem;
-  border: 1px solid var(--color-fd-border);
-  border-radius: 999px;
-  font-size: 0.8rem;
-  color: var(--color-fd-muted-foreground);
-  background: var(--color-fd-card);
-  backdrop-filter: blur(8px);
-}
-
-.nc-eyebrow svg {
-  color: var(--nc-primary);
-}
-
-.nc-heading {
-  font-size: clamp(2.25rem, 5.5vw, 4rem);
-  font-weight: 800;
-  line-height: 1.08;
-  letter-spacing: -0.03em;
-  margin: 0;
-  background: linear-gradient(180deg, var(--color-fd-foreground) 40%, var(--nc-primary) 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  color: transparent;
-}
-
-.nc-desc {
-  font-size: 1.05rem;
-  line-height: 1.65;
-  color: var(--color-fd-muted-foreground);
-  max-width: 40rem;
-  margin: 0;
-}
-
-.nc-cta {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 0.75rem;
-  margin-top: 0.75rem;
-}
-
-.nc-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.4rem;
-  padding: 0.7rem 1.3rem;
-  border-radius: 0.6rem;
-  font-weight: 600;
-  font-size: 0.95rem;
-  text-decoration: none;
-  transition: transform 120ms ease, box-shadow 200ms ease, background 200ms ease;
-}
-
-.nc-btn-primary {
-  background: var(--nc-primary);
-  color: white;
-  box-shadow: 0 10px 30px -10px var(--nc-primary-glow);
-}
-.nc-btn-primary:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 14px 40px -10px var(--nc-primary-glow);
-}
-
-.nc-btn-ghost {
-  border: 1px solid var(--color-fd-border);
-  color: var(--color-fd-foreground);
-  background: var(--color-fd-card);
-}
-.nc-btn-ghost:hover {
-  background: var(--color-fd-accent);
-}
-
-/* Feature cards */
-.nc-features {
-  position: relative;
-  z-index: 1;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 1rem;
-  max-width: 64rem;
-  width: 100%;
-}
-
-.nc-feature-card {
-  padding: 1.25rem;
-  border: 1px solid var(--color-fd-border);
-  border-radius: 0.75rem;
-  background: var(--color-fd-card);
-  transition: border-color 200ms ease, transform 200ms ease;
-}
-
-.nc-feature-card:hover {
-  border-color: var(--nc-primary);
-  transform: translateY(-2px);
-}
-
-.nc-feature-icon {
-  display: inline-flex;
-  padding: 0.5rem;
+article table {
   border-radius: 0.5rem;
-  background: var(--nc-primary-faint);
-  color: var(--nc-primary);
-  margin-bottom: 0.75rem;
+  overflow: hidden;
+  border: 1px solid var(--color-fd-border);
 }
 
-.nc-feature-card h3 {
-  font-size: 1rem;
-  font-weight: 700;
-  margin: 0 0 0.3rem 0;
-  color: var(--color-fd-foreground);
+article thead {
+  background: var(--color-fd-muted);
 }
 
-.nc-feature-card p {
-  font-size: 0.88rem;
-  line-height: 1.55;
-  color: var(--color-fd-muted-foreground);
-  margin: 0;
+article th,
+article td {
+  padding: 0.65rem 0.85rem;
 }
 
-/* ---------- MDX Content Cards ---------- */
+/* ---------- Sidebar refinement ---------- */
+
+/* Slightly more breathing room */
+aside[class*='sidebar'] {
+  font-size: 0.92rem;
+}
+
+/* ---------- Cards (MDX <Card>): clean and minimal ---------- */
 
 .nc-card-group {
   display: grid;
   grid-template-columns: repeat(var(--nc-cols, 2), minmax(0, 1fr));
   gap: 0.75rem;
-  margin: 1.25rem 0;
+  margin: 1.5rem 0;
 }
 
 @media (max-width: 640px) {
@@ -233,42 +264,21 @@
   background: var(--color-fd-card);
   color: var(--color-fd-foreground);
   text-decoration: none;
-  overflow: hidden;
-  transition: border-color 200ms ease, transform 200ms ease, box-shadow 200ms ease;
-}
-
-.nc-card::before {
-  content: '';
-  position: absolute;
-  inset: -1px;
-  border-radius: inherit;
-  padding: 1px;
-  background: linear-gradient(135deg, transparent 40%, var(--nc-primary-glow) 100%);
-  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-  -webkit-mask-composite: xor;
-  mask-composite: exclude;
-  opacity: 0;
-  transition: opacity 200ms ease;
-  pointer-events: none;
+  transition: border-color 180ms ease, background 180ms ease;
 }
 
 .nc-card-interactive:hover {
-  border-color: var(--nc-primary);
-  transform: translateY(-1px);
-  box-shadow: 0 8px 28px -12px var(--nc-primary-glow);
-}
-
-.nc-card-interactive:hover::before {
-  opacity: 1;
+  border-color: var(--nc-primary-border);
+  background: color-mix(in oklab, var(--color-fd-card) 85%, var(--nc-primary-faint));
+  text-decoration: none;
 }
 
 .nc-card-head {
   display: flex;
   align-items: center;
   gap: 0.55rem;
-  font-weight: 650;
-  font-size: 0.98rem;
+  font-weight: 625;
+  font-size: 0.95rem;
   color: var(--color-fd-foreground);
 }
 
@@ -276,12 +286,13 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 1.75rem;
-  height: 1.75rem;
-  border-radius: 0.45rem;
+  width: 1.6rem;
+  height: 1.6rem;
+  border-radius: 0.4rem;
   background: var(--nc-primary-faint);
   color: var(--nc-primary);
   flex-shrink: 0;
+  border: 1px solid var(--nc-primary-border);
 }
 
 .nc-card-title {
@@ -292,16 +303,18 @@
 .nc-card-arrow {
   display: inline-flex;
   color: var(--color-fd-muted-foreground);
-  transition: transform 200ms ease, color 200ms ease;
+  transition: transform 180ms ease, color 180ms ease;
+  opacity: 0.6;
 }
 
 .nc-card-interactive:hover .nc-card-arrow {
-  transform: translateX(3px);
+  transform: translateX(2px);
   color: var(--nc-primary);
+  opacity: 1;
 }
 
 .nc-card-body {
-  margin-top: 0.5rem;
+  margin-top: 0.4rem;
   font-size: 0.88rem;
   line-height: 1.55;
   color: var(--color-fd-muted-foreground);
@@ -310,114 +323,13 @@
 .nc-card-body > :first-child {
   margin-top: 0;
 }
+
 .nc-card-body > :last-child {
   margin-bottom: 0;
 }
 
-/* ---------- Docs page polish ---------- */
-
-/* Bigger, tighter title with subtle bottom accent */
-article > h1.H1,
-article > h1:first-child {
-  font-size: clamp(2rem, 3.2vw, 2.5rem);
-  font-weight: 750;
-  letter-spacing: -0.02em;
-  line-height: 1.15;
-  margin-bottom: 0.5rem;
-  position: relative;
-  padding-left: 0.75rem;
-}
-
-article > h1.H1::before,
-article > h1:first-child::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 0.3em;
-  bottom: 0.3em;
-  width: 3px;
-  border-radius: 2px;
-  background: linear-gradient(180deg, var(--nc-primary), transparent);
-}
-
-/* Slightly larger, more readable description */
-article > p.mb-8.text-lg,
-article > p:nth-child(2) {
-  font-size: 1.05rem;
-  line-height: 1.65;
-  margin-left: 0.75rem;
-  max-width: 46rem;
-}
-
-/* Steps — prominent purple number badges with ring */
-.fd-steps {
-  padding-left: 0;
-  counter-reset: step;
-}
-
-.fd-steps .fd-step {
-  position: relative;
-  padding-left: 3rem;
-  padding-bottom: 1.25rem;
-  border-left: 1px dashed color-mix(in oklab, var(--color-fd-border) 70%, transparent);
-  margin-left: 1rem;
-}
-
-.fd-steps .fd-step:last-child {
-  border-left-color: transparent;
-  padding-bottom: 0;
-}
-
-.fd-steps .fd-step::before {
-  counter-increment: step;
-  content: counter(step);
-  position: absolute;
-  left: -1rem;
-  top: -0.1rem;
-  width: 2rem;
-  height: 2rem;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: 700;
-  font-size: 0.9rem;
-  color: var(--nc-primary);
-  background: var(--color-fd-background);
-  border: 1px solid var(--nc-primary);
-  border-radius: 999px;
-  box-shadow: 0 0 0 4px var(--nc-primary-faint);
-}
-
-.fd-steps .fd-step h3 {
-  margin-top: 0;
-  font-size: 1.1rem;
-  font-weight: 650;
-  letter-spacing: -0.01em;
-}
-
-/* Callout refinement — soft rounded, subtle tint */
-[role='alert'],
-.callout,
-div[class*='callout'] {
-  border-radius: 0.65rem;
-}
-
-/* Inline code pill — softer, more readable */
-:where(article) :not(pre) > code {
-  padding: 0.1rem 0.35rem;
-  border-radius: 0.3rem;
-  font-size: 0.88em;
-  background: var(--nc-primary-faint);
-  color: var(--nc-primary);
-  border: 1px solid color-mix(in oklab, var(--nc-primary) 20%, transparent);
-}
-
-/* Code block surface */
-pre {
-  border: 1px solid var(--color-fd-border);
-}
-
-/* Links in body — underline on hover with purple */
-article a:not(.nc-card):hover {
-  color: var(--nc-primary);
+/* Remove inline-code purple pill style inside cards (too busy) */
+.nc-card :where(:not(pre) > code) {
+  background: var(--color-fd-muted);
+  color: var(--color-fd-foreground);
 }

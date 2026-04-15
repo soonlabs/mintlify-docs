@@ -1,8 +1,10 @@
 import '../global.css';
 import type { Metadata } from 'next';
 import { RootProvider } from 'fumadocs-ui/provider/next';
+import { DocsLayout } from 'fumadocs-ui/layouts/docs';
 import { Inter } from 'next/font/google';
-import { i18nUI } from '@/lib/layout.shared';
+import { i18nUI, baseOptions } from '@/lib/layout.shared';
+import { source } from '@/lib/source';
 
 const inter = Inter({
   subsets: ['latin'],
@@ -37,7 +39,9 @@ export default async function Layout({ params, children }: LayoutProps<'/[lang]'
           theme={{ defaultTheme: 'dark', enableSystem: false }}
           i18n={i18nUI.provider(lang)}
         >
-          {children}
+          <DocsLayout {...baseOptions(lang)} tree={source.getPageTree(lang)}>
+            {children}
+          </DocsLayout>
         </RootProvider>
       </body>
     </html>
