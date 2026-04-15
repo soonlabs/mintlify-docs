@@ -318,42 +318,37 @@ aside button[aria-label='选择语言']:hover {
   border-color: var(--nc-primary-border) !important;
 }
 
-/* Theme toggle — pluck it out of the sidebar footer and anchor it
-   to the top-right of the viewport inside the nav header. */
+/* Theme toggle — bare icon in the top-right corner, no pill wrapper. */
 aside div:has(> button[data-theme-toggle]) {
   position: fixed !important;
-  top: 0.6rem;
-  right: 0.9rem;
+  top: 0.8rem;
+  right: 1rem;
   z-index: 50;
-  background: var(--color-fd-card) !important;
-  border: 1px solid var(--color-fd-border) !important;
-  border-radius: 999px !important;
-  padding: 0.18rem !important;
+  background: transparent !important;
+  border: none !important;
+  padding: 0 !important;
   width: fit-content;
   gap: 0;
-  display: flex;
 }
 
 aside button[data-theme-toggle] {
   margin-inline-start: 0 !important;
   border: none !important;
   background: transparent !important;
+  color: var(--color-fd-muted-foreground) !important;
+  padding: 0.4rem !important;
   border-radius: 999px !important;
-  padding: 0.3rem 0.45rem !important;
   transition: background 150ms ease, color 150ms ease;
 }
 
-aside button[data-theme-toggle][aria-pressed='true'],
-aside button[data-theme-toggle].bg-fd-accent,
-.dark aside button[data-theme-toggle]:has(.lucide-moon),
-:root:not(.dark) aside button[data-theme-toggle]:has(.lucide-sun) {
-  background: var(--nc-primary-faint) !important;
-  color: var(--nc-primary) !important;
+aside button[data-theme-toggle]:hover {
+  color: var(--color-fd-foreground) !important;
+  background: var(--color-fd-accent) !important;
 }
 
 aside button[data-theme-toggle] svg {
-  width: 1rem !important;
-  height: 1rem !important;
+  width: 1.15rem !important;
+  height: 1.15rem !important;
   padding: 0 !important;
 }
 
