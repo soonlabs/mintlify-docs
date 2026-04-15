@@ -229,7 +229,7 @@ article h6 a {
   margin-top: 0;
 }
 
-/* ---------- Callouts: tint + thin left bar + soft icon ---------- */
+/* ---------- Callouts: keep Fumadocs structure, just soften shape ---------- */
 
 div[class*='callout'],
 [role='alert'] {
@@ -237,20 +237,8 @@ div[class*='callout'],
   border: 1px solid color-mix(in oklab, var(--color-fd-border) 75%, var(--nc-primary) 25%) !important;
   padding: 0.9rem 1rem !important;
   background: color-mix(in oklab, var(--color-fd-card) 88%, var(--nc-primary-faint)) !important;
-  position: relative;
-  overflow: hidden;
-}
-
-div[class*='callout']::before,
-[role='alert']::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 0;
-  bottom: 0;
-  width: 3px;
-  background: var(--callout-color, var(--nc-primary));
-  opacity: 0.8;
+  /* No ::before pseudo — Fumadocs already renders a real left-accent div
+     inside the callout. Stacking another bar caused the empty-box glitch. */
 }
 
 /* ---------- Tables ---------- */
