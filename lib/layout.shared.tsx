@@ -3,11 +3,8 @@ import { i18n } from '@/lib/i18n';
 import { defineI18nUI } from 'fumadocs-ui/i18n';
 
 export const i18nUI = defineI18nUI(i18n, {
-  en: {
-    displayName: '🇺🇸 English',
-  },
   zh: {
-    displayName: '🇨🇳 简体中文',
+    displayName: '中文',
     toc: '目录',
     search: '搜索文档',
     lastUpdate: '最后更新于',
@@ -16,12 +13,15 @@ export const i18nUI = defineI18nUI(i18n, {
     nextPage: '下一页',
     chooseLanguage: '选择语言',
   },
+  en: {
+    displayName: 'English',
+  },
 });
 
-// With hideLocale: 'default-locale', the default (en) has no URL prefix.
-// Use '/' for en, '/zh' for zh.
+// With hideLocale: 'default-locale', the default (zh) has no URL prefix.
+// Use '/' for zh, '/en' for en.
 function localePath(locale: string, path = '') {
-  const prefix = locale === 'en' ? '' : `/${locale}`;
+  const prefix = locale === 'zh' ? '' : `/${locale}`;
   return `${prefix}${path}` || '/';
 }
 
