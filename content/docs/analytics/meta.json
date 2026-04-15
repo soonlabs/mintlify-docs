@@ -1,4 +1,5 @@
 {
   "title": "Analytics",
+  "icon": "BarChart3",
   "pages": ["dashboard"]
 }

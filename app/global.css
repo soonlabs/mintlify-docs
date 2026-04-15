@@ -4,9 +4,207 @@
 :root {
   --color-fd-primary: oklch(62% 0.22 295);
   --color-fd-ring: oklch(62% 0.22 295);
+  --nc-primary: #8b5cf6;
+  --nc-primary-glow: rgba(139, 92, 246, 0.35);
+  --nc-primary-faint: rgba(139, 92, 246, 0.08);
 }
 
 .dark {
   --color-fd-primary: oklch(72% 0.18 295);
   --color-fd-ring: oklch(72% 0.18 295);
+  --nc-primary-glow: rgba(167, 139, 250, 0.28);
+  --nc-primary-faint: rgba(167, 139, 250, 0.06);
+}
+
+/* Logo theme switching */
+.nc-logo-dark {
+  display: none;
+}
+.nc-logo-light {
+  display: block;
+}
+.dark .nc-logo-dark {
+  display: block;
+}
+.dark .nc-logo-light {
+  display: none;
+}
+
+/* ---------- Homepage ---------- */
+
+.nc-home {
+  position: relative;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: clamp(3rem, 8vw, 6rem) 1.5rem 5rem;
+  overflow: hidden;
+}
+
+/* Radial purple glow */
+.nc-home-bg {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse 80% 60% at 50% -10%, var(--nc-primary-glow), transparent 60%),
+    radial-gradient(ellipse 50% 40% at 80% 30%, var(--nc-primary-faint), transparent 70%),
+    radial-gradient(ellipse 60% 50% at 20% 40%, var(--nc-primary-faint), transparent 70%);
+  z-index: 0;
+}
+
+/* Faint grid background */
+.nc-home-grid {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(to right, rgba(139, 92, 246, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(139, 92, 246, 0.04) 1px, transparent 1px);
+  background-size: 48px 48px;
+  mask-image: radial-gradient(ellipse 70% 60% at 50% 35%, black, transparent 80%);
+  z-index: 0;
+}
+
+.dark .nc-home-grid {
+  background-image:
+    linear-gradient(to right, rgba(167, 139, 250, 0.06) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(167, 139, 250, 0.06) 1px, transparent 1px);
+}
+
+.nc-hero {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  max-width: 48rem;
+  gap: 1.25rem;
+  margin-bottom: 5rem;
+}
+
+.nc-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.35rem 0.8rem;
+  border: 1px solid var(--color-fd-border);
+  border-radius: 999px;
+  font-size: 0.8rem;
+  color: var(--color-fd-muted-foreground);
+  background: var(--color-fd-card);
+  backdrop-filter: blur(8px);
+}
+
+.nc-eyebrow svg {
+  color: var(--nc-primary);
+}
+
+.nc-heading {
+  font-size: clamp(2.25rem, 5.5vw, 4rem);
+  font-weight: 800;
+  line-height: 1.08;
+  letter-spacing: -0.03em;
+  margin: 0;
+  background: linear-gradient(180deg, var(--color-fd-foreground) 40%, var(--nc-primary) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+.nc-desc {
+  font-size: 1.05rem;
+  line-height: 1.65;
+  color: var(--color-fd-muted-foreground);
+  max-width: 40rem;
+  margin: 0;
+}
+
+.nc-cta {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.75rem;
+  margin-top: 0.75rem;
+}
+
+.nc-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.7rem 1.3rem;
+  border-radius: 0.6rem;
+  font-weight: 600;
+  font-size: 0.95rem;
+  text-decoration: none;
+  transition: transform 120ms ease, box-shadow 200ms ease, background 200ms ease;
+}
+
+.nc-btn-primary {
+  background: var(--nc-primary);
+  color: white;
+  box-shadow: 0 10px 30px -10px var(--nc-primary-glow);
+}
+.nc-btn-primary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 14px 40px -10px var(--nc-primary-glow);
+}
+
+.nc-btn-ghost {
+  border: 1px solid var(--color-fd-border);
+  color: var(--color-fd-foreground);
+  background: var(--color-fd-card);
+}
+.nc-btn-ghost:hover {
+  background: var(--color-fd-accent);
+}
+
+/* Feature cards */
+.nc-features {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+  max-width: 64rem;
+  width: 100%;
+}
+
+.nc-feature-card {
+  padding: 1.25rem;
+  border: 1px solid var(--color-fd-border);
+  border-radius: 0.75rem;
+  background: var(--color-fd-card);
+  transition: border-color 200ms ease, transform 200ms ease;
+}
+
+.nc-feature-card:hover {
+  border-color: var(--nc-primary);
+  transform: translateY(-2px);
+}
+
+.nc-feature-icon {
+  display: inline-flex;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  background: var(--nc-primary-faint);
+  color: var(--nc-primary);
+  margin-bottom: 0.75rem;
+}
+
+.nc-feature-card h3 {
+  font-size: 1rem;
+  font-weight: 700;
+  margin: 0 0 0.3rem 0;
+  color: var(--color-fd-foreground);
+}
+
+.nc-feature-card p {
+  font-size: 0.88rem;
+  line-height: 1.55;
+  color: var(--color-fd-muted-foreground);
+  margin: 0;
 }

@@ -1,4 +1,5 @@
 {
   "title": "计费",
+  "icon": "CreditCard",
   "pages": ["plans", "usage"]
 }

@@ -26,12 +26,14 @@ export function baseOptions(locale: string): BaseLayoutProps {
           <img
             src="/logo/wordmark.png"
             alt="NebulaClaw"
-            className="hidden h-6 w-auto dark:block"
+            className="nc-logo-dark"
+            style={{ height: '1.5rem', width: 'auto' }}
           />
           <img
             src="/logo/wordmark-light.png"
             alt="NebulaClaw"
-            className="h-6 w-auto dark:hidden"
+            className="nc-logo-light"
+            style={{ height: '1.5rem', width: 'auto' }}
           />
         </>
       ),

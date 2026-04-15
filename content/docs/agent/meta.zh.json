@@ -1,4 +1,5 @@
 {
   "title": "Agent 配置",
+  "icon": "Bot",
   "pages": ["create-agent", "personality", "knowledge-base"]
 }

@@ -1,4 +1,5 @@
 {
   "title": "渠道集成",
+  "icon": "MessageSquare",
   "pages": ["telegram", "discord", "slack"]
 }

@@ -1,4 +1,5 @@
 {
   "title": "审核管理",
+  "icon": "ShieldCheck",
   "pages": ["rules", "groups", "audit-log"]
 }

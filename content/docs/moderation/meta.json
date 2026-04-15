@@ -1,4 +1,5 @@
 {
   "title": "Moderation",
+  "icon": "ShieldCheck",
   "pages": ["rules", "groups", "audit-log"]
 }
