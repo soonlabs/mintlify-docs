@@ -3,25 +3,30 @@
 /* ---------- Mintlify-style NebulaClaw theme ---------- */
 
 :root {
-  --color-fd-primary: oklch(72% 0.16 160);
-  --color-fd-ring: oklch(72% 0.16 160);
-  --nc-primary: #34d399;
-  --nc-primary-hover: #6ee7b7;
-  --nc-primary-glow: rgba(52, 211, 153, 0.2);
-  --nc-primary-faint: rgba(52, 211, 153, 0.09);
-  --nc-primary-border: rgba(52, 211, 153, 0.34);
+  --color-fd-primary: oklch(62% 0.22 295);
+  --color-fd-ring: oklch(62% 0.22 295);
+  --nc-primary: #8b5cf6;
+  --nc-primary-hover: #7c3aed;
+  --nc-primary-glow: rgba(139, 92, 246, 0.22);
+  --nc-primary-faint: rgba(139, 92, 246, 0.09);
+  --nc-primary-border: rgba(139, 92, 246, 0.34);
 }
 
 .dark {
-  --color-fd-background: oklch(16% 0.01 250);
-  --color-fd-card: oklch(19% 0.012 250);
-  --color-fd-accent: oklch(23% 0.014 250);
-  --color-fd-muted: oklch(23% 0.014 250);
-  --color-fd-border: oklch(28% 0.015 250);
-  --color-fd-foreground: oklch(96% 0.004 250);
-  --color-fd-muted-foreground: oklch(72% 0.014 250);
-  --color-fd-primary: oklch(79% 0.13 160);
-  --color-fd-ring: oklch(79% 0.13 160);
+  --color-fd-background: oklch(16% 0.012 295);
+  --color-fd-card: oklch(19% 0.014 295);
+  --color-fd-accent: oklch(23% 0.016 295);
+  --color-fd-muted: oklch(23% 0.016 295);
+  --color-fd-border: oklch(28% 0.018 295);
+  --color-fd-foreground: oklch(96% 0.005 295);
+  --color-fd-muted-foreground: oklch(72% 0.015 295);
+  --color-fd-primary: oklch(72% 0.18 295);
+  --color-fd-ring: oklch(72% 0.18 295);
+  --nc-primary: #a78bfa;
+  --nc-primary-hover: #c4b5fd;
+  --nc-primary-glow: rgba(167, 139, 250, 0.22);
+  --nc-primary-faint: rgba(167, 139, 250, 0.1);
+  --nc-primary-border: rgba(167, 139, 250, 0.3);
 }
 
 html,
@@ -123,7 +128,7 @@ article li {
 }
 
 article strong {
-  color: #e2fef2;
+  color: color-mix(in oklab, var(--color-fd-foreground) 92%, var(--nc-primary) 8%);
 }
 
 /* ---------- Inline code ---------- */
@@ -134,7 +139,7 @@ article strong {
   font-size: 0.875em;
   font-weight: 560;
   background: color-mix(in oklab, var(--color-fd-muted) 70%, black 30%);
-  color: #b9ffdf;
+  color: var(--nc-primary);
   border: 1px solid color-mix(in oklab, var(--nc-primary) 35%, var(--color-fd-border));
 }
 
@@ -208,8 +213,8 @@ article h6 a {
   font-weight: 700;
   font-size: 0.85rem;
   font-variant-numeric: tabular-nums;
-  color: #04291b;
-  background: linear-gradient(135deg, #8af7ca 0%, var(--nc-primary) 100%);
+  color: #ffffff;
+  background: linear-gradient(135deg, var(--nc-primary) 0%, var(--nc-primary-hover) 100%);
   border-radius: 999px;
   box-shadow:
     0 0 0 3px color-mix(in oklab, var(--nc-primary) 12%, transparent),
@@ -269,7 +274,7 @@ aside[class*='sidebar'] {
 aside a[aria-current='page'] {
   background: color-mix(in oklab, var(--nc-primary-faint) 90%, transparent) !important;
   border: 1px solid var(--nc-primary-border);
-  color: #ddfff0 !important;
+  color: var(--nc-primary) !important;
 }
 
 /* ---------- Cards ---------- */
