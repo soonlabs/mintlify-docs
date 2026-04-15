@@ -276,29 +276,11 @@ aside a[aria-current='page'] {
   color: var(--nc-primary) !important;
 }
 
-/* Theme toggle (bottom of sidebar): Fumadocs renders a segmented-control
-   wrapper but we only have light/dark (no system), so the single sun/moon
-   button gets pushed to the right via `ms-auto`, leaving an empty padded
-   box on the left. Strip wrapper styling and let the button stand alone. */
-aside div.rounded-lg:has(> button[data-theme-toggle]) {
-  background: transparent !important;
-  border: none !important;
-  padding: 0 !important;
-  width: fit-content;
-  margin-inline-start: auto;
-}
-
-aside button[data-theme-toggle] {
-  margin-inline-start: 0 !important;
-  border: 1px solid var(--color-fd-border) !important;
-  border-radius: 0.5rem !important;
-  background: var(--color-fd-card);
-  transition: background 150ms ease, border-color 150ms ease;
-}
-
-aside button[data-theme-toggle]:hover {
-  background: var(--color-fd-accent);
-  border-color: var(--nc-primary-border) !important;
+/* Site is dark-mode only (forcedTheme: 'dark'). Hide the theme toggle
+   since clicking it does nothing meaningful. */
+aside [data-theme-toggle],
+aside div:has(> button[data-theme-toggle]) {
+  display: none !important;
 }
 
 /* Language picker button — larger, more polished */
