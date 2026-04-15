@@ -294,19 +294,15 @@ aside a[aria-current='page'] {
   color: var(--nc-primary) !important;
 }
 
-/* Sidebar footer — put language picker and theme toggle on ONE row
-   (was stacked: full-width picker above a small right-aligned toggle). */
-aside div.flex.flex-col.p-4.pt-2:has(> button[aria-label='Choose a language']),
-aside div.flex.flex-col.p-4.pt-2:has(> button[aria-label='选择语言']) {
-  flex-direction: row !important;
-  align-items: center;
-  gap: 0.5rem;
+/* Language picker — the flag emoji + label already signals language;
+   hide the redundant lucide-languages glyph. */
+aside button[aria-label='Choose a language'] svg.lucide-languages,
+aside button[aria-label='选择语言'] svg.lucide-languages {
+  display: none;
 }
 
-/* Language picker — fills remaining row width */
 aside button[aria-label='Choose a language'],
 aside button[aria-label='选择语言'] {
-  flex: 1;
   border: 1px solid var(--color-fd-border) !important;
   border-radius: 999px !important;
   padding: 0.45rem 0.85rem !important;
@@ -322,15 +318,20 @@ aside button[aria-label='选择语言']:hover {
   border-color: var(--nc-primary-border) !important;
 }
 
-/* Theme toggle — render as a compact segmented pill. */
+/* Theme toggle — pluck it out of the sidebar footer and anchor it
+   to the top-right of the viewport inside the nav header. */
 aside div:has(> button[data-theme-toggle]) {
+  position: fixed !important;
+  top: 0.6rem;
+  right: 0.9rem;
+  z-index: 50;
   background: var(--color-fd-card) !important;
   border: 1px solid var(--color-fd-border) !important;
   border-radius: 999px !important;
   padding: 0.18rem !important;
   width: fit-content;
-  margin-inline-start: auto;
   gap: 0;
+  display: flex;
 }
 
 aside button[data-theme-toggle] {
