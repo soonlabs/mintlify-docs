@@ -193,32 +193,44 @@ article h6 a {
 
 .fd-steps .fd-step {
   position: relative;
-  padding-left: 2.5rem;
+  padding-left: 2.75rem;
   padding-bottom: 1.75rem;
   margin-left: 0;
   border-left: none;
 }
 
+/* Numbered badge — thin outline + dim purple fill + white bold digit */
 .fd-steps .fd-step::before {
   counter-increment: step;
   content: counter(step);
   position: absolute;
   left: 0;
   top: 0.1rem;
-  width: 1.75rem;
-  height: 1.75rem;
+  width: 1.65rem;
+  height: 1.65rem;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  font-weight: 700;
-  font-size: 0.85rem;
+  font-weight: 650;
+  font-size: 0.82rem;
   font-variant-numeric: tabular-nums;
   color: #ffffff;
-  background: linear-gradient(135deg, var(--nc-primary) 0%, var(--nc-primary-hover) 100%);
+  background: color-mix(in oklab, var(--nc-primary) 55%, transparent);
+  border: 1.5px solid var(--nc-primary);
   border-radius: 999px;
-  box-shadow:
-    0 0 0 3px color-mix(in oklab, var(--nc-primary) 12%, transparent),
-    0 4px 14px -2px var(--nc-primary-glow);
+  z-index: 1;
+}
+
+/* Vertical line connecting consecutive step badges */
+.fd-steps .fd-step:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  left: 0.8rem;
+  top: 1.95rem;
+  bottom: 0;
+  width: 1px;
+  background: color-mix(in oklab, var(--nc-primary) 30%, transparent);
+  z-index: 0;
 }
 
 .fd-steps .fd-step h3 {
@@ -227,24 +239,19 @@ article h6 a {
   font-size: 1.05rem;
   font-weight: 700;
   letter-spacing: -0.015em;
-  line-height: 1.95rem;
+  line-height: 1.85rem;
 }
 
 .fd-steps .fd-step p:first-of-type {
   margin-top: 0;
 }
 
-/* ---------- Callouts: keep Fumadocs structure, just soften shape ---------- */
-
-div[class*='callout'],
-[role='alert'] {
-  border-radius: 0.6rem !important;
-  border: 1px solid color-mix(in oklab, var(--color-fd-border) 75%, var(--nc-primary) 25%) !important;
-  padding: 0.9rem 1rem !important;
-  background: color-mix(in oklab, var(--color-fd-card) 88%, var(--nc-primary-faint)) !important;
-  /* No ::before pseudo — Fumadocs already renders a real left-accent div
-     inside the callout. Stacking another bar caused the empty-box glitch. */
-}
+/* ---------- Callouts ----------
+ * Fumadocs renders callouts as a flex container with a 2px accent-bar div,
+ * an icon svg, and content. The OUTER container has no "callout" in its
+ * class; only the inner bar and icon do (via --callout-color). Trying to
+ * target with [class*='callout'] blew up the inner 2px bar into an empty
+ * padded box. We now leave Fumadocs' native styling alone. */
 
 /* ---------- Tables ---------- */
 
@@ -275,6 +282,49 @@ aside a[aria-current='page'] {
   background: color-mix(in oklab, var(--nc-primary-faint) 90%, transparent) !important;
   border: 1px solid var(--nc-primary-border);
   color: var(--nc-primary) !important;
+}
+
+/* Theme toggle (bottom of sidebar): Fumadocs renders a segmented-control
+   wrapper but we only have light/dark (no system), so the single sun/moon
+   button gets pushed to the right via `ms-auto`, leaving an empty padded
+   box on the left. Strip wrapper styling and let the button stand alone. */
+aside div.rounded-lg:has(> button[data-theme-toggle]) {
+  background: transparent !important;
+  border: none !important;
+  padding: 0 !important;
+  width: fit-content;
+  margin-inline-start: auto;
+}
+
+aside button[data-theme-toggle] {
+  margin-inline-start: 0 !important;
+  border: 1px solid var(--color-fd-border) !important;
+  border-radius: 0.5rem !important;
+  background: var(--color-fd-card);
+  transition: background 150ms ease, border-color 150ms ease;
+}
+
+aside button[data-theme-toggle]:hover {
+  background: var(--color-fd-accent);
+  border-color: var(--nc-primary-border) !important;
+}
+
+/* Language picker button — larger, more polished */
+aside button[aria-label='Choose a language'],
+aside button[aria-label='选择语言'] {
+  border: 1px solid var(--color-fd-border) !important;
+  border-radius: 0.6rem !important;
+  padding: 0.45rem 0.75rem !important;
+  background: var(--color-fd-card) !important;
+  gap: 0.5rem;
+  justify-content: space-between;
+  transition: background 150ms ease, border-color 150ms ease;
+}
+
+aside button[aria-label='Choose a language']:hover,
+aside button[aria-label='选择语言']:hover {
+  background: var(--color-fd-accent) !important;
+  border-color: var(--nc-primary-border) !important;
 }
 
 /* ---------- Cards ---------- */

@@ -61,8 +61,8 @@ export function baseOptions(locale: string): BaseLayoutProps {
       },
       {
         type: 'main',
-        text: 'GitHub',
-        url: 'https://github.com/Manta-Network/Nebulaclaw',
+        text: locale === 'zh' ? '社区' : 'Community',
+        url: 'https://t.me/nebulaclaw',
         external: true,
       },
     ],
