@@ -53,6 +53,18 @@ export function baseOptions(locale: string): BaseLayoutProps {
         url: 'https://app.nebulaclaw.ai',
         external: true,
       },
+      {
+        type: 'main',
+        text: locale === 'zh' ? '官网' : 'Website',
+        url: 'https://nebulaclaw.ai',
+        external: true,
+      },
+      {
+        type: 'main',
+        text: 'GitHub',
+        url: 'https://github.com/Manta-Network/Nebulaclaw',
+        external: true,
+      },
     ],
   };
 }
