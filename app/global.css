@@ -1,34 +1,67 @@
 @import 'fumadocs-ui/style.css';
 
-/* ---------- Mintlify-Maple-inspired NebulaClaw theme ---------- */
+/* ---------- Mintlify-style NebulaClaw theme ---------- */
 
 :root {
-  --color-fd-primary: oklch(62% 0.22 295);
-  --color-fd-ring: oklch(62% 0.22 295);
-  --nc-primary: #8b5cf6;
-  --nc-primary-hover: #7c3aed;
-  --nc-primary-glow: rgba(139, 92, 246, 0.22);
-  --nc-primary-faint: rgba(139, 92, 246, 0.07);
-  --nc-primary-border: rgba(139, 92, 246, 0.3);
+  --color-fd-primary: oklch(72% 0.16 160);
+  --color-fd-ring: oklch(72% 0.16 160);
+  --nc-primary: #34d399;
+  --nc-primary-hover: #6ee7b7;
+  --nc-primary-glow: rgba(52, 211, 153, 0.2);
+  --nc-primary-faint: rgba(52, 211, 153, 0.09);
+  --nc-primary-border: rgba(52, 211, 153, 0.34);
 }
 
 .dark {
-  /* Soft off-black, slightly cool — avoid pure #000 */
-  --color-fd-background: oklch(16% 0.01 280);
-  --color-fd-card: oklch(19% 0.012 280);
-  --color-fd-accent: oklch(22% 0.014 280);
-  --color-fd-muted: oklch(22% 0.014 280);
-  --color-fd-border: oklch(25% 0.015 280);
-  --color-fd-foreground: oklch(95% 0.005 280);
-  --color-fd-muted-foreground: oklch(66% 0.015 280);
+  --color-fd-background: oklch(16% 0.01 250);
+  --color-fd-card: oklch(19% 0.012 250);
+  --color-fd-accent: oklch(23% 0.014 250);
+  --color-fd-muted: oklch(23% 0.014 250);
+  --color-fd-border: oklch(28% 0.015 250);
+  --color-fd-foreground: oklch(96% 0.004 250);
+  --color-fd-muted-foreground: oklch(72% 0.014 250);
+  --color-fd-primary: oklch(79% 0.13 160);
+  --color-fd-ring: oklch(79% 0.13 160);
+}
 
-  --color-fd-primary: oklch(72% 0.18 295);
-  --color-fd-ring: oklch(72% 0.18 295);
-  --nc-primary: #a78bfa;
-  --nc-primary-hover: #c4b5fd;
-  --nc-primary-glow: rgba(167, 139, 250, 0.2);
-  --nc-primary-faint: rgba(167, 139, 250, 0.08);
-  --nc-primary-border: rgba(167, 139, 250, 0.25);
+html,
+body {
+  min-height: 100%;
+}
+
+body {
+  position: relative;
+  font-family: var(--font-sans), ui-sans-serif, system-ui, -apple-system, sans-serif;
+  background:
+    radial-gradient(1100px 420px at 70% -10%, color-mix(in oklab, var(--nc-primary) 22%, transparent), transparent 72%),
+    radial-gradient(900px 380px at 0% 0%, rgba(56, 189, 248, 0.1), transparent 70%),
+    var(--color-fd-background);
+  color: var(--color-fd-foreground);
+}
+
+code,
+pre,
+kbd,
+samp {
+  font-family: var(--font-mono), ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background-image: linear-gradient(rgba(148, 163, 184, 0.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(148, 163, 184, 0.045) 1px, transparent 1px);
+  background-size: 30px 30px;
+  mask-image: radial-gradient(circle at center, black 35%, transparent 100%);
+  opacity: 0.28;
+}
+
+header {
+  backdrop-filter: blur(8px);
+  background: color-mix(in oklab, var(--color-fd-background) 86%, #0b1220) !important;
+  border-bottom: 1px solid color-mix(in oklab, var(--color-fd-border) 88%, white 12%);
 }
 
 /* Logo theme switching */
@@ -49,65 +82,69 @@
 
 article {
   --fd-typography-body: 1rem;
-  line-height: 1.7;
+  line-height: 1.72;
+  text-wrap: pretty;
 }
 
-/* Minimal h1 — let type do the work, no accent bar */
 article > h1.H1,
 article > h1:first-child {
-  font-size: clamp(1.875rem, 2.6vw, 2.25rem);
-  font-weight: 700;
-  letter-spacing: -0.025em;
-  line-height: 1.2;
-  margin-bottom: 0.6rem;
+  font-size: clamp(2rem, 2.8vw, 2.6rem);
+  font-weight: 760;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+  margin-bottom: 0.7rem;
   color: var(--color-fd-foreground);
 }
 
-/* Lead description */
 article > p.mb-8.text-lg,
 article > p:nth-child(2) {
-  font-size: 1.1rem;
-  line-height: 1.6;
+  font-size: 1.05rem;
+  line-height: 1.68;
   color: var(--color-fd-muted-foreground);
   margin-bottom: 2rem;
-  max-width: 46rem;
+  max-width: 48rem;
 }
 
-/* Section headings */
 article h2 {
-  font-weight: 650;
-  letter-spacing: -0.015em;
+  font-weight: 700;
+  letter-spacing: -0.02em;
   margin-top: 2.5rem;
+  font-size: clamp(1.28rem, 1.4vw, 1.5rem);
 }
 
 article h3 {
-  font-weight: 625;
+  font-weight: 660;
   letter-spacing: -0.01em;
 }
 
-/* Prose readability */
 article p,
 article li {
-  line-height: 1.7;
+  line-height: 1.72;
 }
 
-/* ---------- Inline code: Mintlify-style subtle pill ---------- */
+article strong {
+  color: #e2fef2;
+}
+
+/* ---------- Inline code ---------- */
 
 :where(article) :not(pre) > code {
-  padding: 0.08rem 0.35rem;
-  border-radius: 0.3rem;
+  padding: 0.12rem 0.42rem;
+  border-radius: 0.4rem;
   font-size: 0.875em;
-  font-weight: 500;
-  background: var(--color-fd-muted);
-  color: var(--nc-primary);
-  border: none;
+  font-weight: 560;
+  background: color-mix(in oklab, var(--color-fd-muted) 70%, black 30%);
+  color: #b9ffdf;
+  border: 1px solid color-mix(in oklab, var(--nc-primary) 35%, var(--color-fd-border));
 }
 
 /* ---------- Code blocks ---------- */
 
 pre {
-  border: 1px solid var(--color-fd-border);
-  border-radius: 0.6rem;
+  border: 1px solid color-mix(in oklab, var(--color-fd-border) 84%, var(--nc-primary) 16%);
+  border-radius: 0.9rem;
+  background: color-mix(in oklab, var(--color-fd-card) 78%, #070c16) !important;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.03);
 }
 
 /* ---------- Links ---------- */
@@ -117,7 +154,7 @@ article li a:not(.nc-card),
 article td a:not(.nc-card) {
   color: var(--nc-primary);
   text-decoration: none;
-  font-weight: 500;
+  font-weight: 560;
 }
 
 article p a:not(.nc-card):hover,
@@ -141,7 +178,7 @@ article h6 a {
   font-weight: inherit;
 }
 
-/* ---------- Steps: minimalist circular badges ---------- */
+/* ---------- Steps ---------- */
 
 .fd-steps {
   padding-left: 0;
@@ -168,11 +205,11 @@ article h6 a {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  font-weight: 600;
+  font-weight: 700;
   font-size: 0.85rem;
   font-variant-numeric: tabular-nums;
-  color: #fff;
-  background: linear-gradient(135deg, var(--nc-primary) 0%, var(--nc-primary-hover) 100%);
+  color: #04291b;
+  background: linear-gradient(135deg, #8af7ca 0%, var(--nc-primary) 100%);
   border-radius: 999px;
   box-shadow:
     0 0 0 3px color-mix(in oklab, var(--nc-primary) 12%, transparent),
@@ -183,7 +220,7 @@ article h6 a {
   margin-top: 0;
   margin-bottom: 0.5rem;
   font-size: 1.05rem;
-  font-weight: 650;
+  font-weight: 700;
   letter-spacing: -0.015em;
   line-height: 1.95rem;
 }
@@ -197,9 +234,9 @@ article h6 a {
 div[class*='callout'],
 [role='alert'] {
   border-radius: 0.6rem !important;
-  border: 1px solid var(--color-fd-border) !important;
+  border: 1px solid color-mix(in oklab, var(--color-fd-border) 75%, var(--nc-primary) 25%) !important;
   padding: 0.9rem 1rem !important;
-  background: var(--color-fd-card) !important;
+  background: color-mix(in oklab, var(--color-fd-card) 88%, var(--nc-primary-faint)) !important;
   position: relative;
   overflow: hidden;
 }
@@ -219,13 +256,13 @@ div[class*='callout']::before,
 /* ---------- Tables ---------- */
 
 article table {
-  border-radius: 0.5rem;
+  border-radius: 0.75rem;
   overflow: hidden;
-  border: 1px solid var(--color-fd-border);
+  border: 1px solid color-mix(in oklab, var(--color-fd-border) 84%, var(--nc-primary) 16%);
 }
 
 article thead {
-  background: var(--color-fd-muted);
+  background: color-mix(in oklab, var(--color-fd-muted) 72%, black 28%);
 }
 
 article th,
@@ -235,17 +272,24 @@ article td {
 
 /* ---------- Sidebar refinement ---------- */
 
-/* Slightly more breathing room */
 aside[class*='sidebar'] {
   font-size: 0.92rem;
+  background: color-mix(in oklab, var(--color-fd-background) 82%, #0a101a) !important;
+  border-right: 1px solid color-mix(in oklab, var(--color-fd-border) 84%, white 16%);
 }
 
-/* ---------- Cards (MDX <Card>): clean and minimal ---------- */
+aside a[aria-current='page'] {
+  background: color-mix(in oklab, var(--nc-primary-faint) 90%, transparent) !important;
+  border: 1px solid var(--nc-primary-border);
+  color: #ddfff0 !important;
+}
+
+/* ---------- Cards ---------- */
 
 .nc-card-group {
   display: grid;
   grid-template-columns: repeat(var(--nc-cols, 2), minmax(0, 1fr));
-  gap: 0.75rem;
+  gap: 0.85rem;
   margin: 1.5rem 0;
 }
 
@@ -258,18 +302,20 @@ aside[class*='sidebar'] {
 .nc-card {
   position: relative;
   display: block;
-  padding: 1rem 1.1rem;
-  border: 1px solid var(--color-fd-border);
-  border-radius: 0.75rem;
-  background: var(--color-fd-card);
+  padding: 1.05rem 1.1rem;
+  border: 1px solid color-mix(in oklab, var(--color-fd-border) 83%, var(--nc-primary) 17%);
+  border-radius: 0.9rem;
+  background: color-mix(in oklab, var(--color-fd-card) 84%, #0a1017);
   color: var(--color-fd-foreground);
   text-decoration: none;
-  transition: border-color 180ms ease, background 180ms ease;
+  transition: border-color 180ms ease, background 180ms ease, transform 180ms ease, box-shadow 180ms ease;
 }
 
 .nc-card-interactive:hover {
-  border-color: var(--nc-primary-border);
+  transform: translateY(-2px);
+  border-color: color-mix(in oklab, var(--nc-primary-border) 75%, white 25%);
   background: color-mix(in oklab, var(--color-fd-card) 85%, var(--nc-primary-faint));
+  box-shadow: 0 12px 30px -18px var(--nc-primary-glow);
   text-decoration: none;
 }
 
@@ -277,7 +323,7 @@ aside[class*='sidebar'] {
   display: flex;
   align-items: center;
   gap: 0.55rem;
-  font-weight: 625;
+  font-weight: 650;
   font-size: 0.95rem;
   color: var(--color-fd-foreground);
 }
@@ -290,7 +336,7 @@ aside[class*='sidebar'] {
   height: 1.6rem;
   border-radius: 0.4rem;
   background: var(--nc-primary-faint);
-  color: var(--nc-primary);
+  color: #9bffd8;
   flex-shrink: 0;
   border: 1px solid var(--nc-primary-border);
 }
