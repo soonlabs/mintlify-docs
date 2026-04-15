@@ -51,17 +51,9 @@ samp {
   font-family: var(--font-mono), ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
 }
 
-body::before {
-  content: '';
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  background-image: linear-gradient(rgba(148, 163, 184, 0.045) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(148, 163, 184, 0.045) 1px, transparent 1px);
-  background-size: 30px 30px;
-  mask-image: radial-gradient(circle at center, black 35%, transparent 100%);
-  opacity: 0.28;
-}
+/* Grid overlay removed — vertical lines visually collided with the
+   Step component's connector line, making it look like 2-3 parallel
+   bars near each step badge. */
 
 header {
   backdrop-filter: blur(8px);
@@ -379,7 +371,7 @@ aside button[aria-label='选择语言']:hover {
   height: 1.6rem;
   border-radius: 0.4rem;
   background: var(--nc-primary-faint);
-  color: #9bffd8;
+  color: var(--nc-primary);
   flex-shrink: 0;
   border: 1px solid var(--nc-primary-border);
 }
