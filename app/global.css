@@ -294,12 +294,22 @@ aside a[aria-current='page'] {
   color: var(--nc-primary) !important;
 }
 
-/* Language picker */
+/* Sidebar footer — put language picker and theme toggle on ONE row
+   (was stacked: full-width picker above a small right-aligned toggle). */
+aside div.flex.flex-col.p-4.pt-2:has(> button[aria-label='Choose a language']),
+aside div.flex.flex-col.p-4.pt-2:has(> button[aria-label='选择语言']) {
+  flex-direction: row !important;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* Language picker — fills remaining row width */
 aside button[aria-label='Choose a language'],
 aside button[aria-label='选择语言'] {
+  flex: 1;
   border: 1px solid var(--color-fd-border) !important;
-  border-radius: 0.6rem !important;
-  padding: 0.45rem 0.75rem !important;
+  border-radius: 999px !important;
+  padding: 0.45rem 0.85rem !important;
   background: var(--color-fd-card) !important;
   gap: 0.5rem;
   justify-content: space-between;
