@@ -1,5 +1,6 @@
 import '../global.css';
 import type { Metadata } from 'next';
+import { Analytics } from '@vercel/analytics/next';
 import { RootProvider } from 'fumadocs-ui/provider/next';
 import { DocsLayout } from 'fumadocs-ui/layouts/docs';
 import { JetBrains_Mono, Manrope } from 'next/font/google';
@@ -49,6 +50,7 @@ export default async function Layout({ params, children }: LayoutProps<'/[lang]'
             {children}
           </DocsLayout>
         </RootProvider>
+        <Analytics />
       </body>
     </html>
   );
